@@ -1,33 +1,4 @@
 <!DOCTYPE html>
-<html lang="ar">
-<head>
-    <meta charset="UTF-8">
-    <style>
-        body { margin: 0; background: #ffe6e6; overflow: hidden; height: 100vh; }
-        .heart { position: absolute; color: red; font-size: 20px; animation: fall 4s linear infinite; }
-        @keyframes fall {
-            0% { transform: translateY(-10vh); }
-            100% { transform: translateY(110vh); }
-        }
-    </style>
-</head>
-<body>
-    <script>
-        function createHeart() {
-            const heart = document.createElement('div');
-            heart.className = 'heart';
-            heart.innerHTML = '❤️';
-            heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.animationDuration = Math.random() * 3 + 2 + 's';
-            document.body.appendChild(heart);
-            setTimeout(() => heart.remove(), 5000);
-        }
-        setInterval(createHeart, 300);
-    </script>
-</body>
-</html>
-
-<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
@@ -38,7 +9,7 @@
         
         body { margin: 0; padding: 0; font-family: 'Tajawal', sans-serif; background: #fce4ec; overflow-x: hidden; }
 
-        /* شاشة القفل (تظهر دائماً عند فتح الرابط) */
+        /* شاشة القفل */
         #lock-screen {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: linear-gradient(135deg, #f8bbd0, #f48fb1);
@@ -64,10 +35,12 @@
 
         /* محتوى الموقع */
         #main-content { display: none; text-align: center; padding: 50px 20px; }
-        .hero-img { width: 250px; height: 250px; border-radius: 50%; border: 5px solid white; box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
-        .memory-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; padding: 20px; }
+        .hero-img { width: 250px; height: 250px; border-radius: 50%; border: 5px solid white; box-shadow: 0 10px 20px rgba(0,0,0,0.2); object-fit: cover; }
+        .memory-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; padding: 20px; max-width: 900px; margin: auto; }
         .card { background: white; padding: 15px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
         .card img { width: 100%; height: 200px; object-fit: cover; border-radius: 10px; }
+        
+        #audio-container { margin-top: 30px; padding: 20px; }
     </style>
 </head>
 <body>
@@ -82,9 +55,6 @@
     </div>
 
     <!-- محتوى الموقع الأساسي -->
- /*
-        .heart { position: fixed; color: #ff4081; font-size: 20px; pointer-events: none; z-index: 100; animation: fly 5s linear infinite; }
-        @keyframes fly { 0% { transform: translateY(100vh); opacity: 1; } 100% { transform: translateY(-10vh); opacity: 0; } }
     <div id="main-content">
         <h1>💖 Mohamed & Malak 💖</h1>
         <h2>🎂 Happy Birthday Malak 🎂</h2>
@@ -104,27 +74,19 @@
             <h2>💌 رسالة ليكي</h2>
             <p style="line-height: 2;">ملك… 💖<br>كل سنة وانتي أجمل حاجة حصلت في حياتي.<br>وجودك جنبي نعمة بشكر ربنا عليها كل يوم.<br>ضحكتك وسعادتك هما أجمل حاجة في الدنيا بالنسبالي.<br>يارب العمر كله يكون في حب وفرحة وسعادة.<br>وأفضل أشوفك مبسوطة وناجحة ومحققة كل أحلامك.<br>كل سنة وانتي معايا يا نور عيني ❤️</p>
         </div>
+
+        <!-- مشغل الأغاني أسفل الصفحة -->
+        <div id="audio-container">
+            <audio id="myAudio" controls>
+                <source src="song.mp3" type="audio/mpeg">
+            </audio>
+        </div>
+
         <footer>💖 Mohamed Loves Malak Forever 💖</footer>
     </div>
 
-    <audio id="myAudio" loop>
-        <source src="song.mp3" type="audio/mpeg">
-    </audio>
-
     <script>
-        function startExperience() {
-            // إخفاء شاشة القفل
-            document.getElementById('lock-screen').style.opacity = '0';
-            setTimeout(() => {
-                document.getElementById('lock-screen').style.display = 'none';
-                document.getElementById('main-content').style.display = 'block';
-                // تشغيل الموسيقى
-                document.getElementById("myAudio").play();
-                // بدء القلوب
-                setInterval(spawnHeart, 1);
-            }, 1000);
-        }
-function spawnHeart() {
+        function spawnHeart() {
             const heart = document.createElement('div');
             heart.innerHTML = '❤️';
             heart.className = 'heart';
@@ -133,8 +95,20 @@ function spawnHeart() {
             document.body.appendChild(heart);
             setTimeout(() => heart.remove(), 5000);
         }
+
+        function startExperience() {
+            document.getElementById('lock-screen').style.opacity = '0';
+            setTimeout(() => {
+                document.getElementById('lock-screen').style.display = 'none';
+                document.getElementById('main-content').style.display = 'block';
+                
+                // تشغيل القلوب بشكل مستمر
+                setInterval(spawnHeart, 500);
+                
+                // تشغيل الأغنية
+                document.getElementById("myAudio").play();
+            }, 1000);
+        }
     </script>
 </body>
 </html>
-
-
