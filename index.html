@@ -15,7 +15,7 @@ background:#fff;
 overflow-x:hidden;
 }
 
-/* ================= LOCK ================= */
+/* ================= LOCK FACE ID ================= */
 #lockScreen{
 position:fixed;
 inset:0;
@@ -23,14 +23,14 @@ display:flex;
 justify-content:center;
 align-items:center;
 z-index:9999;
-text-align:center;
 color:white;
-animation:show 1.2s ease forwards;
+text-align:center;
 opacity:0;
-transform:scale(1.1);
+transform:scale(1.2);
+animation:lockIn 1.2s ease forwards;
 }
 
-@keyframes show{
+@keyframes lockIn{
 to{opacity:1;transform:scale(1);}
 }
 
@@ -39,8 +39,7 @@ content:"";
 position:absolute;
 inset:0;
 background:url("3135284C-D0E2-438A-B210-BB2929FA1FCE.jpeg") center/cover no-repeat;
-filter:blur(3px);
-transform:scale(1.1);
+filter:blur(4px);
 opacity:0.6;
 }
 
@@ -48,7 +47,7 @@ opacity:0.6;
 content:"";
 position:absolute;
 inset:0;
-background:linear-gradient(135deg,rgba(255,192,203,0.4),rgba(0,0,0,0.2));
+background:linear-gradient(135deg,rgba(255,192,203,0.4),rgba(0,0,0,0.3));
 }
 
 .lockContent{position:relative;z-index:2;}
@@ -72,10 +71,12 @@ font-weight:bold;
 cursor:pointer;
 }
 
-/* ================= HERO ================= */
+/* ================= MAIN ================= */
+#main{display:none;}
+
+/* HERO */
 .hero{
 height:90vh;
-position:relative;
 display:flex;
 flex-direction:column;
 justify-content:center;
@@ -83,14 +84,14 @@ align-items:center;
 text-align:center;
 color:white;
 background:url("3135284C-D0E2-438A-B210-BB2929FA1FCE.jpeg") center/cover no-repeat;
+position:relative;
 }
 
-/* 🔥 وضوح الصورة 70% */
 .hero::before{
 content:"";
 position:absolute;
 inset:0;
-background:rgba(0,0,0,0.30);
+background:rgba(0,0,0,0.35);
 }
 
 .hero h1,.hero h2,.hero h3,.hero p{
@@ -113,6 +114,7 @@ align-items:center;
 width:90%;
 max-width:420px;
 text-align:center;
+position:relative;
 }
 
 .v-item img{
@@ -121,37 +123,44 @@ height:520px;
 object-fit:cover;
 border-radius:25px;
 box-shadow:0 15px 35px rgba(0,0,0,0.2);
-transition:transform 0.2s linear;
+transition:transform 0.3s ease;
 will-change:transform;
 }
 
-.v-item p{
-margin-top:10px;
-color:#ff3d7f;
-font-weight:700;
+/* 💖 hearts on hover */
+.v-item:hover::after{
+content:"💖💖💖";
+position:absolute;
+top:40%;
+left:50%;
+transform:translate(-50%,-50%);
+font-size:30px;
+animation:pop 0.8s ease forwards;
+opacity:0;
 }
 
-/* ================= BIG FINAL MESSAGE ================= */
+@keyframes pop{
+0%{opacity:0;transform:translate(-50%,-50%) scale(0);}
+50%{opacity:1;}
+100%{opacity:0;transform:translate(-50%,-50%) scale(2);}
+}
+
+/* ================= FINAL MESSAGE ================= */
 .card{
 background:#fff;
-padding:35px;
-margin:40px auto;
-max-width:800px;
+padding:40px;
+margin:50px auto;
+max-width:850px;
 border-radius:25px;
 box-shadow:0 10px 30px rgba(0,0,0,0.15);
 text-align:center;
 color:#ff3d7f;
 font-size:20px;
-line-height:1.9;
+line-height:2;
 }
 
 .card h2{
-font-size:32px;
-margin-bottom:20px;
-}
-
-.card p{
-font-size:18px;
+font-size:34px;
 }
 
 /* ================= HEARTS ================= */
@@ -168,23 +177,38 @@ animation:fall linear infinite;
 0%{transform:translateY(-10vh);}
 100%{transform:translateY(110vh);}
 }
+
+/* ================= REPLAY BUTTON ================= */
+.replay{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#ff4d88;
+color:white;
+border:none;
+padding:12px 18px;
+border-radius:50px;
+cursor:pointer;
+z-index:999;
+}
 </style>
 </head>
 
 <body>
 
+<!-- AUDIO -->
 <audio id="music" loop>
 <source src="song.mp3">
 </audio>
 
-<!-- LOCK -->
+<!-- LOCK SCREEN -->
 <div id="lockScreen">
 <div class="lockContent">
 <h1>💖 Mohamed & Malak 💖</h1>
-<p>اكتب الباسورد يا قلبي</p>
+<p>Face ID / Password</p>
 <input id="pass" type="password">
 <br>
-<button onclick="openSite()">ادخل 💖</button>
+<button onclick="openSite()">Unlock 💖</button>
 </div>
 </div>
 
@@ -194,7 +218,7 @@ animation:fall linear infinite;
 <div class="hero">
 <h1>💖 Mohamed & Malak 💖</h1>
 <h2>Happy Birthday My Love 🎂</h2>
-<h3>انتِ مش مجرد حب… انتِ الأمان اللي مفيش بعده</h3>
+<h3>You are my safest place</h3>
 <p>28 / 06 / 2005</p>
 </div>
 
@@ -202,96 +226,99 @@ animation:fall linear infinite;
 
 <div class="v-item">
 <img src="3135284C-D0E2-438A-B210-BB2929FA1FCE.jpeg">
-<p>كل سنة وانتي طيبة يا أجمل حاجة حصلتلي 💖</p>
+<p>كل سنة وانتي طيبة 💖</p>
 </div>
 
 <div class="v-item">
 <img src="546be1fc-98e4-48ef-8a81-63ae519b0be2.jpeg">
-<p>وجودك جنبي هو أحلى صدفة في حياتي 🌸</p>
+<p>إنتي أجمل حاجة حصلتلي 🌸</p>
 </div>
 
 <div class="v-item">
 <img src="IMG_4418.jpeg">
-<p>كل لحظة معاكي بتعلّمني يعني إيه حب حقيقي 💕</p>
-</div>
-
-<div class="v-item">
-<img src="ab984390-dba5-437e-898c-b5094c8d6d20.jpeg">
-<p>في حضنك الدنيا بتبقى أمان ❤️</p>
-</div>
-
-<div class="v-item">
-<img src="e622ddf3-b6c8-4430-8158-845f4eadf70f.jpeg">
-<p>إنتي قلبي وروحي وكل حكاياتي 💘</p>
+<p>كل لحظة معاكي حياة 💕</p>
 </div>
 
 </div>
 
-<!-- 💥 FINAL MESSAGE BIG -->
+<!-- FINAL MESSAGE -->
 <div class="card">
-<h2>💌 رسالة من قلبي ليكي</h2>
+<h2>💌 رسالة من قلبي</h2>
 
 <p>
-يا ملاك حياتي… 💖<br><br>
+أنا مش بكتب كلام وخلاص…<br>
+أنا بكتب إحساس عشته معاكي.<br><br>
 
-أنا عمري ما كنت أتخيل إن في حد ممكن يغيّر حياتي بالشكل ده…<br>
-بس إنتي جيتي وخليتي كل حاجة ليها معنى.<br><br>
+إنتي مش بس حب… إنتي حياة كاملة أنا مش عايز أعيش غيرها.<br>
+كل يوم بيمر بحس إن وجودك معايا هو أعظم نعمة.<br><br>
 
-إنتي مش بس حب، إنتي الأمان اللي لما بكون تايه برجعله.<br>
-وكل مرة بسمع صوتك بحس إن الدنيا لسه فيها خير.<br><br>
+لو الدنيا كلها راحت… كفاية إنك إنتي موجودة ❤️<br><br>
 
-أنا بحبك مش عشان إنتي كاملة…<br>
-أنا بحبك عشان إنتي الحقيقة الوحيدة اللي مفيش بعدها أي حاجة.<br><br>
-
-ولو خيروني بين الدنيا كلها وبينك…<br>
-هختارك إنتي من غير تفكير ❤️<br><br>
-
-وعد مني… هفضل أحبك، أساندك، وأكون دايمًا السبب في ضحكتك.<br>
-لحد آخر نفس فيّا 💖
+هفضل أحبك… مش لحد ما أزهق… لكن لحد ما أموت 💖
 </p>
 </div>
 
 </div>
 
+<!-- REPLAY BUTTON -->
+<button class="replay" onclick="replay()">Replay 💖</button>
+
 <script>
 
-let correctPassword="Love";
+let music=document.getElementById("music");
 
-/* open */
+/* FADE MUSIC IN */
+function fadeInAudio(){
+music.volume=0;
+music.play();
+
+let v=0;
+let fade=setInterval(()=>{
+v+=0.05;
+music.volume=Math.min(v,1);
+if(v>=1) clearInterval(fade);
+},200);
+}
+
+/* OPEN */
 function openSite(){
 let pass=document.getElementById("pass").value;
 
-if(pass===correctPassword){
 document.getElementById("lockScreen").style.display="none";
 document.getElementById("main").style.display="block";
-document.getElementById("music").play();
-}
-else{
-alert("الباسورد غلط 💔");
-}
+
+fadeInAudio();
 }
 
-/* hearts */
+/* HEARTS */
 setInterval(()=>{
 let h=document.createElement("div");
 h.classList.add("heart");
 h.innerHTML="💗";
 h.style.left=Math.random()*100+"vw";
-h.style.animationDuration=(6+Math.random()*4)+"s";
+h.style.animationDuration=(5+Math.random()*4)+"s";
 document.body.appendChild(h);
 setTimeout(()=>h.remove(),9000);
-},300);
+},250);
 
-/* PARALLAX SCROLL */
+/* PARALLAX */
 window.addEventListener("scroll",()=>{
-let imgs=document.querySelectorAll(".v-item img");
+document.querySelectorAll(".v-item img").forEach(img=>{
+let r=img.getBoundingClientRect();
+img.style.transform=`translateY(${r.top/30}px)`;
+});
+});
 
-imgs.forEach((img)=>{
-let rect=img.getBoundingClientRect();
-let speed=rect.top/25;
-img.style.transform=`translateY(${speed}px)`;
+/* REPLAY */
+function replay(){
+window.scrollTo({top:0,behavior:"smooth"});
+
+/* restart animations */
+document.querySelectorAll(".v-item img").forEach(img=>{
+img.style.transform="translateY(0)";
 });
-});
+
+}
 
 </script>
 
