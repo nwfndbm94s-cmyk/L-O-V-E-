@@ -37,7 +37,7 @@ z-index:999999;
 }
 
 #lock-screen h1{
-font-size:2.5rem;
+font-size:2.3rem;
 text-shadow:0 0 20px #ff4d88;
 }
 
@@ -68,11 +68,9 @@ display:none;
 padding:20px;
 }
 
-.hero{
-padding-top:60px;
-}
-
+/* HERO */
 .hero h1{
+margin-top:50px;
 font-size:2.5rem;
 }
 
@@ -83,17 +81,27 @@ font-size:1.5rem;
 
 .date{
 margin-top:10px;
+font-weight:bold;
 }
 
 .main-img{
-width:80%;
+width:85%;
 max-width:400px;
 border-radius:25px;
 margin-top:20px;
 box-shadow:0 10px 30px rgba(0,0,0,0.3);
+transition:0.4s;
 }
 
-/* CARDS */
+.main-img:hover{
+transform:scale(1.05);
+}
+
+/* SECTIONS */
+.section{
+margin-top:50px;
+}
+
 .card{
 background:rgba(255,255,255,0.15);
 margin:20px auto;
@@ -101,6 +109,11 @@ padding:15px;
 border-radius:20px;
 max-width:350px;
 backdrop-filter:blur(10px);
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-8px);
 }
 
 .card img{
@@ -113,11 +126,11 @@ border-radius:15px;
 position:fixed;
 color:#ff4d88;
 font-size:20px;
-animation:up 6s linear infinite;
+animation:floatUp 6s linear infinite;
 pointer-events:none;
 }
 
-@keyframes up{
+@keyframes floatUp{
 0%{transform:translateY(100vh);opacity:1;}
 100%{transform:translateY(-10vh);opacity:0;}
 }
@@ -136,6 +149,15 @@ color:white;
 cursor:pointer;
 }
 
+.love-letter{
+max-width:600px;
+margin:40px auto;
+background:rgba(255,255,255,0.15);
+padding:25px;
+border-radius:25px;
+line-height:2;
+}
+
 </style>
 </head>
 
@@ -143,12 +165,11 @@ cursor:pointer;
 
 <!-- LOCK SCREEN -->
 <div id="lock-screen">
-<h1>دي حاجه بسيطه اتمنى تفرحك ينور عيني 
- 💖 Happy Birthday Malokty 💖<  h1>
-<p>اكتبي الباسورد</p>
+<h1>💖 Happy Birthday Malak 💖</h1>
+<p>اكتب الباسورد عشان تدخل</p>
 
 <input type="text" id="password" placeholder="love">
-<button onclick="checkPass()">دوسي هنا بسرعه  🎁</button>
+<button onclick="checkPass()">افتحي المفاجأة 🎁</button>
 </div>
 
 <!-- MUSIC -->
@@ -161,27 +182,27 @@ cursor:pointer;
 
 <div class="hero">
 <h1>💖 Mohamed & Malak 💖</h1>
-<h2>🎂 Happy Birthday Malak 🎂
-Happy Birthday my love ❤️
-You are the most beautiful part of my life, and I’m grateful for every moment I get to spend with you. I wish you endless happiness, love, and success. I love you more every single day 💖</h2>
+<h2>🎂 Happy Birthday Malak 🎂</h2>
 <div class="date">28 / 06 / 2005</div>
 
 <img class="main-img" src="3135284C-D0E2-438A-B210-BB2929FA1FCE.jpeg">
 </div>
 
+<div class="section">
+
 <div class="card">
 <img src="3135284C-D0E2-438A-B210-BB2929FA1FCE.jpeg">
-<p>   كل سنه وانتي طيبه يروح قلب محمد وعيونو ❤️</p>
+<p>أجمل بداية ❤️</p>
 </div>
 
 <div class="card">
 <img src="546be1fc-98e4-48ef-8a81-63ae519b0be2.jpeg">
-<p>كل لحظة معاكي بحس فيها اني مبسوط من قلبي بجد 💖</p>
+<p>كل لحظة معاكي فرحة 💖</p>
 </div>
 
 <div class="card">
 <img src="IMG_4418.jpeg">
-<p>   وجودك فحياتي وعمه كبيره اوي من ربنا  🌹</p>
+<p>ضحكتك أجمل حاجة 🌹</p>
 </div>
 
 <div class="card">
@@ -191,7 +212,17 @@ You are the most beautiful part of my life, and I’m grateful for every moment 
 
 <div class="card">
 <img src="e622ddf3-b6c8-4430-8158-845f4eadf70f.jpeg">
-<p>إنتي بقيتي كل حاجه فحياتي والله ❤️</p>
+<p>إنتي حياتي ❤️</p>
+</div>
+
+</div>
+
+<div class="love-letter">
+💌 رسالة ليكي<br><br>
+كل سنة وانتي أجمل حاجة في حياتي ❤️<br>
+وجودك جنبي هو أجمل نعمة ربنا رزقني بيها 💖<br>
+بحبك كل يوم أكتر من اللي قبله 🌹<br>
+وإن شاء الله دايماً مع بعض ❤️
 </div>
 
 </div>
@@ -203,25 +234,24 @@ You are the most beautiful part of my life, and I’m grateful for every moment 
 
 <script>
 
-/* CHECK PASSWORD - FIXED 100% */
 function checkPass(){
 
-const pass = document.getElementById("password").value.trim().toLowerCase();
+let pass = document.getElementById("password").value.trim().toLowerCase();
 
 if(pass === "love"){
 
 document.getElementById("lock-screen").style.display = "none";
 document.getElementById("main-content").style.display = "block";
 
-/* PLAY MUSIC (iPhone fix) */
-const music = document.getElementById("bg-music");
+/* MUSIC */
+let music = document.getElementById("bg-music");
 if(music){
 music.play().catch(()=>{});
 }
 
 /* HEARTS */
 setInterval(()=>{
-const h = document.createElement("div");
+let h = document.createElement("div");
 h.innerHTML="💖";
 h.className="heart";
 h.style.left=Math.random()*100+"vw";
@@ -234,7 +264,7 @@ alert("الباسورد غلط ❤️");
 }
 }
 
-/* ENTER KEY */
+/* ENTER */
 document.getElementById("password").addEventListener("keypress",function(e){
 if(e.key==="Enter"){
 checkPass();
