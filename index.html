@@ -4,89 +4,82 @@
     <meta charset="UTF-8">
     <title>Happy Birthday Malak ❤️</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap');
-        body { margin: 0; background: #05000a; color: white; font-family: 'Tajawal', sans-serif; overflow-x: hidden; }
+        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&family=Dancing+Script:wght@700&display=swap');
+        
+        body { margin: 0; background: #fff5f7; color: #5d4037; font-family: 'Tajawal', sans-serif; overflow-x: hidden; }
 
-        /* شاشة القفل الاحترافية */
+        /* شاشة القفل */
         #lock-screen { 
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
-            background: radial-gradient(circle, #2d1b4e, #0f0518);
-            display: flex; flex-direction: column; justify-content: center; align-items: center; 
-            z-index: 9999; transition: transform 1s ease-in-out;
+            position: fixed; top:0; left:0; width:100%; height:100%; 
+            background: linear-gradient(135deg, #fce4ec, #f8bbd0);
+            display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 9999;
+            transition: opacity 1s ease;
         }
-        .glass-box { 
-            background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(20px); 
-            padding: 40px; border-radius: 30px; border: 1px solid rgba(255,255,255,0.2);
-            text-align: center; box-shadow: 0 10px 40px rgba(0,0,0,0.5);
-        }
-        .hb-main { font-size: 2.5rem; color: #ff4081; margin-bottom: 20px; animation: glow 2s infinite alternate; }
-        @keyframes glow { from { text-shadow: 0 0 10px #ff4081; } to { text-shadow: 0 0 30px #ff4081; } }
-
+        .glass-box { background: rgba(255, 255, 255, 0.6); backdrop-filter: blur(15px); padding: 50px; border-radius: 40px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        h1 { font-family: 'Dancing Script', cursive; font-size: 3rem; color: #d81b60; }
+        
         /* المحتوى */
-        #main-content { display: none; padding: 20px; text-align: center; }
+        #main-content { display: none; padding: 40px 20px; text-align: center; }
         .card { 
-            background: #1a0b2e; padding: 20px; border-radius: 25px; margin: 40px auto; max-width: 350px;
-            transition: transform 0.5s; border: 2px solid #ff4081;
+            background: white; padding: 25px; border-radius: 30px; margin: 30px auto; max-width: 400px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05); transition: transform 0.6s ease;
         }
-        .card:hover { transform: translateY(-15px) scale(1.02); }
-        .card img { width: 100%; height: 250px; object-fit: cover; border-radius: 15px; }
-
-        /* القلوب - زدنا كثافتها */
-        .heart { position: fixed; color: #ff4081; font-size: 24px; pointer-events: none; z-index: 999; animation: float 4s linear infinite; }
-        @keyframes float { 0% { transform: translateY(100vh) scale(0); opacity: 1; } 50% { opacity: 1; } 100% { transform: translateY(-10vh) scale(1.5); opacity: 0; } }
-
-        .music-float { position: fixed; bottom: 30px; right: 30px; z-index: 2000; }
-        button { padding: 15px 30px; background: #ff4081; border: none; border-radius: 50px; color: white; font-weight: bold; cursor: pointer; }
+        .card:hover { transform: scale(1.05); }
+        .card img { width: 100%; height: 300px; object-fit: cover; border-radius: 20px; }
+        
+        /* القلوب */
+        .heart { position: fixed; color: #ff4081; font-size: 20px; pointer-events: none; z-index: 100; animation: float 5s linear infinite; }
+        @keyframes float { 0% { transform: translateY(100vh) rotate(0deg); } 100% { transform: translateY(-10vh) rotate(360deg); } }
+        
+        button { padding: 15px 40px; background: #d81b60; border: none; border-radius: 50px; color: white; font-size: 1.2rem; cursor: pointer; }
     </style>
 </head>
 <body>
 
     <div id="lock-screen">
         <div class="glass-box">
-            <h1 class="hb-main">Happy Birthday Malak</h1>
-            <input type="password" id="password" placeholder="اكتبي love" style="padding:15px; border-radius:20px; border:none; width:200px; text-align:center;">
-            <br>
-            <button onclick="checkPass()">افتحي المفاجأة ❤️</button>
+            <h1>Happy Birthday Malak</h1>
+            <p>أدخلي كلمة السر يا ملكة عمري ❤️</p>
+            <input type="text" id="password" placeholder="اكتبي love" style="padding: 15px; width: 200px; border-radius: 20px; border: 1px solid #d81b60;">
+            <br><button onclick="checkPass()">افتحي المفاجأة</button>
         </div>
     </div>
 
     <div id="main-content">
-        <h1>عيد ميلاد سعيد يا ملك قلبي 🎂</h1>
-        <div id="timer" style="font-size: 1.2rem; color: #ff85a2; margin-bottom: 30px;"></div>
+        <h1>عيد ميلاد سعيد يا أغلى ما في حياتي 🎂</h1>
+        <p>كل سنة وانتي دنيتي، وكل سنة وانتي بتنوري أيامي بوجودك.</p>
+
+        <div class="card"><img src="3135284C-D0E2-438A-B210-BB2929FA1FCE.jpeg"><h3>ذكرى أول لقاء</h3></div>
+        <div class="card"><img src="546be1fc-98e4-48ef-8a81-63ae519b0be2.jpeg"><h3>أحلى لحظاتنا</h3></div>
         
-        <div class="card"><img src="3135284C-D0E2-438A-B210-BB2929FA1FCE.jpeg"><p>كل سنة وانتي أحلى حاجة في حياتي</p></div>
-        <div class="card"><img src="546be1fc-98e4-48ef-8a81-63ae519b0be2.jpeg"><p>ضحكتك هي اللي بتديني القوة</p></div>
-        <div class="card"><img src="IMG_4418.jpeg"><p>وجودك جنبي نعمة بشكر ربنا عليها</p></div>
-        <div class="card"><img src="ab984390-dba5-437e-898c-b5094c8d6d20.jpeg"><p>معاكي بحس إني ملكت الدنيا</p></div>
-        <div class="card"><img src="e622ddf3-b6c8-4430-8158-845f4eadf70f.jpeg"><p>بحبك يا كل دنيتي</p></div>
+        <div class="card" style="background: #f8bbd0; color: #880e4f;">
+            <h2>💌 رسالة من قلبي</h2>
+            <p style="line-height: 1.8;">ملك.. في يوم ميلادك، بحب أقولك إنك أجمل هدية ربنا بعتهالي. وجودك في حياتي مخليني أسعد إنسان في الكون، وكل اللي بتمناه في السنة الجديدة إنك تفضلي دايماً مبسوطة ومحققة كل أحلامك، وتفضلي جنبي ومعايا طول العمر. بحبك فوق ما تتخيلي!</p>
+            <div style="font-weight: bold; font-size: 1.5rem;">❤️ Mohamed ❤️</div>
+        </div>
     </div>
 
-    <div class="music-float">
-        <audio id="bg-music" loop><source src="song.mp3" type="audio/mpeg"></audio>
-        <button onclick="document.getElementById('bg-music').play()">🎵 شغلي الأغنية</button>
-    </div>
+    <audio id="bg-music" loop><source src="song.mp3" type="audio/mpeg"></audio>
 
     <script>
         function checkPass() {
             if(document.getElementById('password').value.toLowerCase() === 'love') {
-                document.getElementById('lock-screen').style.transform = 'translateY(-100%)';
-                document.getElementById('main-content').style.display = 'block';
-                document.getElementById('bg-music').play();
-                setInterval(createHeart, 200); // قلوب كثيفة
-            } else { alert("الباسورد خطأ يا روحي!"); }
+                document.getElementById('lock-screen').style.opacity = '0';
+                setTimeout(() => {
+                    document.getElementById('lock-screen').style.display = 'none';
+                    document.getElementById('main-content').style.display = 'block';
+                    document.getElementById('bg-music').play();
+                    setInterval(createHeart, 300);
+                }, 1000);
+            } else { alert("الباسورد مش صح يا روحي!"); }
         }
 
         function createHeart() {
             const h = document.createElement('div'); h.innerHTML = '❤️'; h.className = 'heart';
             h.style.left = Math.random() * 100 + 'vw';
             document.body.appendChild(h);
-            setTimeout(() => h.remove(), 4000);
+            setTimeout(() => h.remove(), 5000);
         }
-
-        setInterval(() => {
-            const diff = new Date() - new Date("2024-06-28");
-            document.getElementById('timer').innerText = `بقالنا ${Math.floor(diff / (1000*60*60*24))} يوم مع بعض ❤️`;
-        }, 1000);
     </script>
 </body>
 </html>
