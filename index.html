@@ -3,333 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>عيد ميلاد ملك - حب أبدي 💖</title>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;500;700&family=Amiri:ital@1&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
+    <title>Happy Birthday Malak ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary-pink: #ff85a2;
-            --soft-pink: #fce4ec;
-            --dark-pink: #d81b60;
-            --white: #ffffff;
+        :root { --main-pink: #ff4081; --soft-pink: #fce4ec; }
+        body { margin: 0; padding: 0; font-family: 'Tajawal', sans-serif; background: #fce4ec; overflow-x: hidden; }
+
+        /* مشغل الموسيقى الثابت */
+        .music-player {
+            position: fixed; top: 20px; right: 20px; z-index: 9999;
+            background: white; padding: 10px 20px; border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); display: flex; align-items: center; gap: 10px;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        /* تأثير القلوب المتطايرة */
+        .heart { position: fixed; color: var(--main-pink); font-size: 20px; pointer-events: none; animation: fly 6s linear infinite; opacity: 0; }
+        @keyframes fly { 0% { transform: translateY(100vh) scale(0); opacity: 1; } 100% { transform: translateY(-10vh) scale(1.5); opacity: 0; } }
 
-        body {
-            background: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 50%, #fce4ec 100%);
-            font-family: 'Tajawal', sans-serif;
-            overflow-x: hidden;
-            color: #444;
-        }
-
-        /* حاوية القلوب والورد المتطاير */
-        #particles-js {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-        }
-
-        /* شاشة البداية (لتجاوز حظر التشغيل التلقائي للموسيقى) */
-        #start-overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: var(--soft-pink);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            flex-direction: column;
-            text-align: center;
-        }
-
-        #start-overlay button {
-            padding: 15px 40px;
-            font-size: 20px;
-            background: var(--primary-pink);
-            border: none;
-            color: white;
-            border-radius: 50px;
-            cursor: pointer;
-            box-shadow: 0 5px 15px rgba(216, 27, 96, 0.3);
-            transition: 0.3s;
-        }
-
-        /* الصفحة الرئيسية */
-        .hero {
-            padding: 60px 20px;
-            text-align: center;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        h1.main-title {
-            font-size: 3rem;
-            color: var(--dark-pink);
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .hb-title {
-            font-size: 1.8rem;
-            color: var(--primary-pink);
-            margin-bottom: 5px;
-        }
-
-        .birth-date {
-            font-size: 1.2rem;
-            letter-spacing: 2px;
-            font-weight: bold;
-            color: #888;
-        }
-
-        .main-profile-img {
-            width: 280px;
-            height: 280px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin: 30px 0;
-            border: 8px solid white;
-            box-shadow: 0 15px 35px rgba(216, 27, 96, 0.2);
-            transition: transform 0.5s ease;
-        }
-
-        .main-profile-img:hover {
-            transform: scale(1.05);
-        }
-
-        /* قسم الذكريات */
-        .memories {
-            padding: 50px 10px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 40px;
-            font-size: 2rem;
-            color: var(--dark-pink);
-        }
-
-        .memory-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            padding: 20px;
-        }
-
-        .memory-item {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-            transition: 0.4s;
-            text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.5);
-        }
-
-        .memory-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(216, 27, 96, 0.15);
-        }
-
-        .memory-item img {
-            width: 100%;
-            height: 350px;
-            object-fit: cover;
-        }
-
-        .memory-caption {
-            padding: 20px;
-            font-family: 'Amiri', serif;
-            font-size: 1.2rem;
-            color: var(--dark-pink);
-        }
-
-        /* الرسالة الرومانسية */
-        .love-letter {
-            background: rgba(255, 255, 255, 0.8);
-            max-width: 700px;
-            margin: 50px auto;
-            padding: 40px;
-            border-radius: 30px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
-            line-height: 2;
-            position: relative;
-            border: 2px dashed var(--primary-pink);
-        }
-
-        .letter-content {
-            font-size: 1.1rem;
-            text-align: center;
-            white-space: pre-line;
-        }
-
-        /* الفوتر */
-        footer {
-            text-align: center;
-            padding: 40px;
-            background: var(--soft-pink);
-            color: var(--dark-pink);
-            font-weight: bold;
-        }
-
-        /* تأثيرات الطيران */
-        .floating-element {
-            position: fixed;
-            pointer-events: none;
-            z-index: 100;
-            animation: floatUp 6s linear forwards;
-            opacity: 0;
-        }
-
-        @keyframes floatUp {
-            0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
-        }
-
-        /* ظهور العناصر */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: 1s ease-out;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        @media (max-width: 600px) {
-            h1.main-title { font-size: 2rem; }
-            .main-profile-img { width: 220px; height: 220px; }
-            .love-letter { width: 90%; padding: 25px; }
-        }
+        /* التصميم العام */
+        .container { text-align: center; padding: 50px 20px; }
+        .hero-img { width: 250px; height: 250px; border-radius: 50%; border: 5px solid white; box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+        .memory-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; padding: 20px; }
+        .card { background: white; padding: 15px; border-radius: 15px; transition: 0.3s; }
+        .card:hover { transform: scale(1.05); }
+        .card img { width: 100%; height: 200px; object-fit: cover; border-radius: 10px; }
     </style>
 </head>
 <body>
 
-    <div id="start-overlay">
-        <h1 style="color: #d81b60; margin-bottom: 20px;">جاهزة يا ملوكة؟ 💖</h1>
-        <button onclick="startApp()">اضغطي هنا يا روحي ❤️</button>
+    <div class="music-player">
+        <span>🎵 تشغيل الأغنية:</span>
+        <audio id="myAudio" controls loop>
+            <source src="song.mp3" type="audio/mpeg">
+        </audio>
     </div>
 
-    <audio id="mySong" loop>
-        <source src="song.mp3" type="audio/mpeg">
-    </audio>
+    <div class="container">
+        <h1>💖 Mohamed & Malak 💖</h1>
+        <h2>🎂 Happy Birthday Malak 🎂</h2>
+        <p>28 / 06 / 2005</p>
+        <img src="3135284C-D0E2-438A-B210-BB2929FA1FCE.jpeg" class="hero-img">
 
-    <div class="hero">
-        <h1 class="main-title fade-in">💖 Mohamed & Malak 💖</h1>
-        <h2 class="hb-title fade-in">🎂 Happy Birthday Malak 🎂</h2>
-        <p class="birth-date fade-in">28 / 06 / 2005</p>
-
-        <img src="3135284C-D0E2-438A-B210-BB2929FA1FCE.jpeg" class="main-profile-img fade-in" alt="Malak">
-    </div>
-
-    <section class="memories">
-        <h2 class="section-title fade-in">📸 ذكرياتنا الحلوة</h2>
+        <h2>📸 ذكرياتنا الحلوة</h2>
         <div class="memory-grid">
-            
-            <div class="memory-item fade-in">
-                <img src="3135284C-D0E2-438A-B210-BB2929FA1FCE.jpeg" alt="Memory">
-                <div class="memory-caption">بداية كل حاجة حلوة في حياتي ❤️</div>
-            </div>
-
-            <div class="memory-item fade-in">
-                <img src="546be1fc-98e4-48ef-8a81-63ae519b0be2.jpeg" alt="Memory">
-                <div class="memory-caption">ضحكتك هي اللي بتنور لي طريقي ✨</div>
-            </div>
-
-            <div class="memory-item fade-in">
-                <img src="IMG_4418.jpeg" alt="Memory">
-                <div class="memory-caption">كل لحظة معاكي هي مكسب ليا 💖</div>
-            </div>
-
-            <div class="memory-item fade-in">
-                <img src="ab984390-dba5-437e-898c-b5094c8d6d20.jpeg" alt="Memory">
-                <div class="memory-caption">سندي وقوتي وأجمل بنوتة في الدنيا 🥰</div>
-            </div>
-
-            <div class="memory-item fade-in">
-                <img src="e622ddf3-b6c8-4430-8158-845f4eadf70f.jpeg" alt="Memory">
-                <div class="memory-caption">هفضل أحبك لآخر يوم في عمري ❤️</div>
-            </div>
-
+            <div class="card"><img src="3135284C-D0E2-438A-B210-BB2929FA1FCE.jpeg"><p>أحلى أيام عمري</p></div>
+            <div class="card"><img src="546be1fc-98e4-48ef-8a81-63ae519b0be2.jpeg"><p>ضحكتك بتهون عليا كل حاجة</p></div>
+            <div class="card"><img src="IMG_4418.jpeg"><p>سندي وقوتي</p></div>
+            <div class="card"><img src="ab984390-dba5-437e-898c-b5094c8d6d20.jpeg"><p>معاكي بحس إني ملكت الدنيا</p></div>
+            <div class="card"><img src="e622ddf3-b6c8-4430-8158-845f4eadf70f.jpeg"><p>كل سنة وانتي دنيتي</p></div>
         </div>
-    </section>
 
-    <section class="memories">
-        <h2 class="section-title fade-in">💌 رسالة ليكي</h2>
-        <div class="love-letter fade-in">
-            <div class="letter-content">
-                ملك… 💖
-
-                كل سنة وانتي أجمل حاجة حصلت في حياتي.
-                وجودك جنبي نعمة بشكر ربنا عليها كل يوم.
-                ضحكتك وسعادتك هما أجمل حاجة في الدنيا بالنسبالي.
-                يارب العمر كله يكون في حب وفرحة وسعادة.
-                وأفضل أشوفك مبسوطة وناجحة ومحققة كل أحلامك.
-
-                كل سنة وانتي معايا ينور عيني ❤️
-            </div>
+        <div style="background: white; padding: 30px; margin: 40px auto; max-width: 600px; border-radius: 20px;">
+            <h2>💌 رسالة ليكي</h2>
+            <p style="line-height: 2;">ملك… 💖<br>كل سنة وانتي أجمل حاجة حصلت في حياتي.<br>وجودك جنبي نعمة بشكر ربنا عليها كل يوم.<br>ضحكتك وسعادتك هما أجمل حاجة في الدنيا بالنسبالي.<br>يارب العمر كله يكون في حب وفرحة وسعادة.<br>وأفضل أشوفك مبسوطة وناجحة ومحققة كل أحلامك.<br>كل سنة وانتي معايا يا نور عيني ❤️</p>
         </div>
-    </section>
 
-    <footer>
-        <p class="fade-in">💖 Mohamed Loves Malak Forever 💖</p>
-    </footer>
+        <footer>💖 Mohamed Loves Malak Forever 💖</footer>
+    </div>
 
     <script>
-        // تشغيل الموسيقى وإخفاء الشاشة
-        function startApp() {
-            document.getElementById('mySong').play();
-            document.getElementById('start-overlay').style.display = 'none';
-            initApp();
-        }
+        // تشغيل الموسيقى تلقائياً عند أول ضغطة
+        window.onclick = function() {
+            document.getElementById("myAudio").play();
+        };
 
-        // إنشاء القلوب والورد بشكل مستمر
-        function createParticle(symbol) {
-            const el = document.createElement('div');
-            el.className = 'floating-element';
-            el.innerHTML = symbol;
-            el.style.left = Math.random() * 100 + 'vw';
-            el.style.fontSize = Math.random() * 20 + 15 + 'px';
-            el.style.color = '#ff85a2';
-            document.body.appendChild(el);
-            
-            setTimeout(() => {
-                el.remove();
-            }, 6000);
+        // توليد القلوب المتطايرة
+        function spawnHeart() {
+            const heart = document.createElement('div');
+            heart.innerHTML = '❤️';
+            heart.className = 'heart';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 6000);
         }
-
-        function initApp() {
-            // توليد قلوب وورد
-            setInterval(() => createParticle('❤️'), 400);
-            setInterval(() => createParticle('🌸'), 800);
-            
-            // مراقب ظهور العناصر عند التمرير
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
-                });
-            }, { threshold: 0.1 });
-
-            document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-        }
+        setInterval(spawnHeart, 300);
     </script>
 </body>
 </html>
