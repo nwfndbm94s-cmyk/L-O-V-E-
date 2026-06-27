@@ -1,83 +1,119 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday Malak ❤️</title>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        :root { --main-pink: #ff4081; --soft-pink: #fce4ec; }
-        body { margin: 0; padding: 0; font-family: 'Tajawal', sans-serif; background: #fce4ec; overflow-x: hidden; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Malak 💖</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<style>
+    * {
+        font-family: 'Cairo', sans-serif;
+    }
+    
+    :root {
+        --kashmir: #D6A3A3;
+        --kashmir-dark: #B68080;
+        --white: #FFFFFF;
+        --cream: #FFF9F7;
+    }
 
-        /* مشغل الموسيقى الثابت */
-        .music-player {
-            position: fixed; top: 20px; right: 20px; z-index: 9999;
-            background: white; padding: 10px 20px; border-radius: 50px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1); display: flex; align-items: center; gap: 10px;
-        }
+    body {
+        background: linear-gradient(135deg, #FFF9F7 0%, #FFEDED 100%);
+        min-height: 100vh;
+        overflow-x: hidden;
+    }
 
-        /* تأثير القلوب المتطايرة */
-        .heart { position: fixed; color: var(--main-pink); font-size: 20px; pointer-events: none; animation: fly 6s linear infinite; opacity: 0; }
-        @keyframes fly { 0% { transform: translateY(100vh) scale(0); opacity: 1; } 100% { transform: translateY(-10vh) scale(1.5); opacity: 0; } }
+    .lock-screen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 9999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: opacity 2.5s ease, visibility 2.5s ease;
+    }
 
-        /* التصميم العام */
-        .container { text-align: center; padding: 50px 20px; }
-        .hero-img { width: 250px; height: 250px; border-radius: 50%; border: 5px solid white; box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
-        .memory-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; padding: 20px; }
-        .card { background: white; padding: 15px; border-radius: 15px; transition: 0.3s; }
-        .card:hover { transform: scale(1.05); }
-        .card img { width: 100%; height: 200px; object-fit: cover; border-radius: 10px; }
-    </style>
-</head>
-<body>
+    .lock-screen.fade-out {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+    }
 
-    <div class="music-player">
-        <span>🎵 تشغيل الأغنية:</span>
-        <audio id="myAudio" controls loop>
-            <source src="song.mp3" type="audio/mpeg">
-        </audio>
-    </div>
+    .lock-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.7;
+        z-index: -1;
+    }
 
-    <div class="container">
-        <h1>💖 Mohamed & Malak 💖</h1>
-        <h2>🎂 Happy Birthday Malak 🎂</h2>
-        <p>28 / 06 / 2005</p>
-        <img src="3135284C-D0E2-438A-B210-BB2929FA1FCE.jpeg" class="hero-img">
+    .lock-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, rgba(214,163,163,0.4) 0%, rgba(255,255,255,0.3) 100%);
+        backdrop-filter: blur(8px);
+    }
 
-        <h2>📸 ذكرياتنا الحلوة</h2>
-        <div class="memory-grid">
-            <div class="card"><img src="3135284C-D0E2-438A-B210-BB2929FA1FCE.jpeg"><p>أحلى أيام عمري</p></div>
-            <div class="card"><img src="546be1fc-98e4-48ef-8a81-63ae519b0be2.jpeg"><p>ضحكتك بتهون عليا كل حاجة</p></div>
-            <div class="card"><img src="IMG_4418.jpeg"><p>سندي وقوتي</p></div>
-            <div class="card"><img src="ab984390-dba5-437e-898c-b5094c8d6d20.jpeg"><p>معاكي بحس إني ملكت الدنيا</p></div>
-            <div class="card"><img src="e622ddf3-b6c8-4430-8158-845f4eadf70f.jpeg"><p>كل سنة وانتي دنيتي</p></div>
-        </div>
+    .pulse-animation {
+        animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
 
-        <div style="background: white; padding: 30px; margin: 40px auto; max-width: 600px; border-radius: 20px;">
-            <h2>💌 رسالة ليكي</h2>
-            <p style="line-height: 2;">ملك… 💖<br>كل سنة وانتي أجمل حاجة حصلت في حياتي.<br>وجودك جنبي نعمة بشكر ربنا عليها كل يوم.<br>ضحكتك وسعادتك هما أجمل حاجة في الدنيا بالنسبالي.<br>يارب العمر كله يكون في حب وفرحة وسعادة.<br>وأفضل أشوفك مبسوطة وناجحة ومحققة كل أحلامك.<br>كل سنة وانتي معايا يا نور عيني ❤️</p>
-        </div>
+    @keyframes pulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+    }
 
-        <footer>💖 Mohamed Loves Malak Forever 💖</footer>
-    </div>
+    .shake {
+        animation: shake 0.5s;
+    }
 
-    <script>
-        // تشغيل الموسيقى تلقائياً عند أول ضغطة
-        window.onclick = function() {
-            document.getElementById("myAudio").play();
-        };
+    @keyframes shake {
+        0%, 100% { transform: translateX(0); }
+        25% { transform: translateX(-10px); }
+        75% { transform: translateX(10px); }
+    }
 
-        // توليد القلوب المتطايرة
-        function spawnHeart() {
-            const heart = document.createElement('div');
-            heart.innerHTML = '❤️';
-            heart.className = 'heart';
-            heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
-            document.body.appendChild(heart);
-            setTimeout(() => heart.remove(), 6000);
-        }
-        setInterval(spawnHeart, 300);
-    </script>
-</body>
-</html>
+    .memory-card {
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .memory-card:hover {
+        transform: translateY(-12px);
+        box-shadow: 0 20px 40px rgba(214,163,163,0.4);
+    }
+
+    .memory-card img {
+        transition: transform 0.6s ease;
+    }
+
+    .memory-card:hover img {
+        transform: scale(1.08);
+    }
+
+    .hearts-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        opacity: 0.7;
+    }
+
+    .heart {
+        position: absolute;
+        color: var
