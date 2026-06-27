@@ -1,244 +1,249 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Malak ❤️</title>
+<title>Happy Birthday Malak ❤️</title>
+
 <style>
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Arial,sans-serif;
+font-family:Tahoma;
 }
+
 body{
-background:linear-gradient(135deg,#ffd6e7,#fff0f6,#ffe4ec);
-overflow-x:hidden;
+background:linear-gradient(135deg,#ffe6ee,#fff5f8);
+color:#444;
 }
-#lockScreen{
-position:fixed;
-inset:0;
-display:flex;
-justify-content:center;
-align-items:center;
-background:linear-gradient(135deg,#ff7eb3,#ff4f81);
-z-index:9999;
-}
-.lock-box{
-background:rgba(255,255,255,.15);
-backdrop-filter:blur(15px);
-padding:35px;
-border-radius:30px;
-text-align:center;
-width:90%;
-max-width:420px;
-color:white;
-box-shadow:0 0 30px rgba(255,255,255,.3);
-}
-.lock-box h1{
-font-size:38px;
-margin-bottom:10px;
-}
-.lock-box p{
-margin-bottom:20px;
-}
-.lock-box input{
-width:100%;
-padding:15px;
-border:none;
-border-radius:15px;
-font-size:18px;
-text-align:center;
-}
-.lock-box button{
-margin-top:15px;
-padding:15px 30px;
-border:none;
-border-radius:15px;
-background:white;
-color:#ff4f81;
-font-size:18px;
-font-weight:bold;
-cursor:pointer;
-}
+
 .hero{
 text-align:center;
-padding:60px 20px;
+padding:50px 20px;
 }
+
 .hero h1{
-font-size:55px;
-color:#ff4f81;
+font-size:60px;
+color:#ff5f8f;
 }
+
 .hero h2{
-font-size:30px;
+font-size:28px;
 margin-top:10px;
 }
-.message{
-max-width:850px;
-margin:20px auto;
-padding:30px;
-background:white;
-border-radius:25px;
-box-shadow:0 5px 20px rgba(0,0,0,.1);
-text-align:center;
-line-height:2;
+
+.hero p{
+margin-top:15px;
+font-size:20px;
 }
+
+.main-photo{
+width:320px;
+max-width:90%;
+border-radius:25px;
+margin-top:25px;
+box-shadow:0 10px 25px rgba(0,0,0,.15);
+}
+
+.info{
+display:flex;
+justify-content:center;
+gap:20px;
+flex-wrap:wrap;
+padding:30px;
+}
+
+.card{
+background:white;
+padding:20px;
+border-radius:20px;
+min-width:200px;
+box-shadow:0 5px 15px rgba(0,0,0,.08);
+text-align:center;
+}
+
 .gallery{
 padding:30px;
-}
-.gallery h2{
 text-align:center;
-margin-bottom:20px;
-color:#ff4f81;
 }
+
+.gallery h2{
+margin-bottom:20px;
+color:#ff5f8f;
+}
+
 .images{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+gap:15px;
+padding:15px;
 }
-.images div{
-background:white;
-padding:10px;
-border-radius:25px;
-box-shadow:0 5px 15px rgba(255,105,180,.25);
-}
+
 .images img{
 width:100%;
-height:380px;
+height:300px;
 object-fit:cover;
 border-radius:20px;
-box-shadow:0 0 25px rgba(255,105,180,.4);
 }
-.images p{
+
+.message{
+max-width:800px;
+margin:auto;
+background:white;
+padding:30px;
+border-radius:25px;
+box-shadow:0 5px 15px rgba(0,0,0,.08);
+line-height:2;
+font-size:20px;
 text-align:center;
-margin-top:10px;
-font-weight:bold;
-color:#ff4f81;
 }
+
 footer{
 text-align:center;
 padding:40px;
-font-size:24px;
-color:#ff4f81;
+font-size:22px;
+color:#ff5f8f;
 }
-.heart{
+
+.hearts{
 position:fixed;
-font-size:25px;
+width:100%;
+height:100%;
 pointer-events:none;
+overflow:hidden;
+}
+
+.heart{
+position:absolute;
+color:#ff5f8f;
 animation:float 8s linear infinite;
 }
+
 @keyframes float{
-0%{
+from{
 transform:translateY(100vh);
 opacity:1;
 }
-100%{
+to{
 transform:translateY(-100px);
 opacity:0;
 }
 }
 </style>
 </head>
+
 <body>
-<div id="lockScreen">
-<div class="lock-box">
-<h1>💖 Mohamed & Malak 💖</h1>
-<p>Happy Birthday My Princess 🎂</p>
-<input id="pass" type="password" placeholder="Password">
-
-Unlock 🔓
-
-<script>
-function unlockSite(){
-let pass = document.getElementById("pass").value.trim();
-if(pass.toLowerCase() === "love"){
-document.getElementById("lockScreen").style.display = "none";
-let music = document.getElementById("music");
-if(music){
-music.play().catch(()=>{});
-}
-}else{
-alert("الباسورد الصحيح هو Love ❤️");
-}
-}
-</script>
-
-}
-</div>
-</div>
-<audio id="music" loop>
-<source src="song.mp3" type="audio/mpeg">
-</audio>
-<section class="hero">
-<h1>🎂 Happy Birthday</h1>
-<h2>Malak ❤️</h2>
-<p>28 / 06 / 2005</p>
-</section>
-<section class="message">
-<h2>💌 To My Love</h2>
-<p>
-
-كل سنة وانتي معايا ينور عيني 💖
-
-وجودك في حياتي أجمل حاجة حصلتلي.
-
-أتمنى أشوفك دايمًا سعيدة ومبسوطة.
-
-ربنا يخليكي ليا ويفرح قلبك زي ما فرحتي قلبي.
-
-❤️❤️❤️
 
 </p>
 </section>
 <section class="gallery">
 <h2>📸 Our Memories</h2>
 <div class="images">
-<div>
-<img src="3135284C-D0E2-438A-B210-BB2929FA1FCE.jpeg">
+<div> <img src="3135284C-D0E2-438A-B210-BB2929FA1FCE.jpeg"> <p>كل سنة وانتي معايا ينور عيني 💖</p> </div>
+<div> <img src="546be1fc-98e4-48ef-8a81-63ae519b0be2.jpeg"> <p>أجمل ضحكة في الدنيا ❤️</p> </div>
+<div> <img src="IMG_4418.jpeg"> <p>وجودك نعمة من ربنا 🥰</p> </div>
+<div> <img src="ab984390-dba5-437e-898c-b5094c8d6d20.jpeg"> <p>معاكي كل يوم أحلى ✨</p> </div>
+<div> <img src="e622ddf3-b6c8-4430-8158-845f4eadf70f.jpeg"> <p>Happy Birthday Malak 🎂🌹</p> </div>
+</div>
+
+
+<div class="hearts" id="hearts"></div>
+
+<section class="hero">
+
+<h1>🎂 Happy Birthday</h1>
+<h2>Malak ❤️</h2>
+
+<p>28 / 6 / 2005</p>
+
+<img src="1.jpg" class="main-photo">
+
+</section>
+
+<section class="info">
+
+<div class="card">
+<h3>العمر</h3>
+<p>21 سنة 🎉</p>
+</div>
+
+<div class="card">
+<h3>برجك</h3>
+<p>السرطان ♋</p>
+</div>
+
+<div class="card">
+<h3>رسالة خاصة</h3>
 <p>كل سنة وانتي معايا ينور عيني 💖</p>
 </div>
-<div>
-<img src="546be1fc-98e4-48ef-8a81-63ae519b0be2.jpeg">
-<p>أجمل ضحكة في الدنيا ❤️</p>
-</div>
-<div>
-<img src="IMG_4418.jpeg">
-<p>وجودك نعمة من ربنا 🥰</p>
-</div>
-<div>
-<img src="ab984390-dba5-437e-898c-b5094c8d6d20.jpeg">
-<p>معاكي كل يوم أحلى ✨</p>
-</div>
-<div>
-<img src="e622ddf3-b6c8-4430-8158-845f4eadf70f.jpeg">
-<p>Happy Birthday Malak 🎂🌹</p>
-</div>
-</div>
+
 </section>
+
+<section class="gallery">
+
+<h2>📸 ذكرياتنا الحلوة</h2>
+
+<div class="images">
+<img src="1.jpg">
+<img src="2.jpg">
+<img src="3.jpg">
+<img src="4.jpg">
+<img src="5.jpg">
+</div>
+
+</section>
+
+<section class="message">
+
+<h2>💌 رسالة ليكي</h2>
+
+<br>
+
+مالك...
+
+كل سنة وانتي أجمل حاجة حصلت في حياتي.
+
+وجودك جنبي نعمة بشكر ربنا عليها كل يوم.
+
+ضحكتك وسعادتك هما أجمل حاجة في الدنيا بالنسبالي.
+
+يارب العمر كله يكون في حب وفرحة وسعادة.
+
+وأفضل أشوفك مبسوطة وناجحة ومحققة كل أحلامك.
+
+❤️❤️❤️
+
+</section>
+
 <footer>
-💖 Mohamed Loves Malak Forever 💖
+
+كل سنة وانتي معايا ينور عيني 💖
+
 </footer>
+
 <script>
-function unlockSite(){
-let pass=document.getElementById("pass").value;
-if(pass==="Love"){
-document.getElementById("lockScreen").style.display="none";
-document.getElementById("music").play();
-}else{
-alert("Wrong Password ❤️");
-}
-}
-setInterval(()=>{
+
+for(let i=0;i<25;i++){
+
 let heart=document.createElement("div");
-heart.className="heart";
+
 heart.innerHTML="💖";
-heart.style.left=Math.random()*100+"vw";
+
+heart.classList.add("heart");
+
+heart.style.left=Math.random()*100+"%";
+
+heart.style.fontSize=(20+Math.random()*30)+"px";
+
 heart.style.animationDuration=(5+Math.random()*5)+"s";
-document.body.appendChild(heart);
-setTimeout(()=>{
-heart.remove();
-},8000);
-},500);
+
+document.getElementById("hearts").appendChild(heart);
+
+}
+
 </script>
+
 </body>
 </html>
