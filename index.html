@@ -5,75 +5,84 @@
     <title>Happy Birthday Malak ❤️</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap');
-        body { margin: 0; background: #0f0518; color: white; font-family: 'Tajawal', sans-serif; overflow-x: hidden; }
+        body { margin: 0; background: #05000a; color: white; font-family: 'Tajawal', sans-serif; overflow-x: hidden; }
 
-        /* شاشة القفل */
-        #lock-screen { position: fixed; top:0; left:0; width:100%; height:100%; background: #1a0b2e; display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 9999; }
-        .hb-main { font-size: 3rem; color: #ff4081; text-shadow: 0 0 20px #ff4081; margin-bottom: 20px; }
-        input { padding: 15px; border-radius: 25px; border: none; width: 250px; text-align: center; }
-        button { padding: 15px 40px; margin-top: 20px; background: #ff4081; border: none; border-radius: 25px; color: white; cursor: pointer; transition: 0.3s; }
+        /* شاشة القفل الاحترافية */
+        #lock-screen { 
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+            background: radial-gradient(circle, #2d1b4e, #0f0518);
+            display: flex; flex-direction: column; justify-content: center; align-items: center; 
+            z-index: 9999; transition: transform 1s ease-in-out;
+        }
+        .glass-box { 
+            background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(20px); 
+            padding: 40px; border-radius: 30px; border: 1px solid rgba(255,255,255,0.2);
+            text-align: center; box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+        }
+        .hb-main { font-size: 2.5rem; color: #ff4081; margin-bottom: 20px; animation: glow 2s infinite alternate; }
+        @keyframes glow { from { text-shadow: 0 0 10px #ff4081; } to { text-shadow: 0 0 30px #ff4081; } }
 
-        /* المحتوى والأنيميشن */
+        /* المحتوى */
         #main-content { display: none; padding: 20px; text-align: center; }
-        .card { background: #2d1b4e; padding: 15px; border-radius: 20px; margin: 30px auto; max-width: 350px; 
-                opacity: 0; transform: translateY(50px) scale(0.9); transition: all 1s ease; }
-        .card.visible { opacity: 1; transform: translateY(0) scale(1); }
-        .card:hover { animation: pulse 2s infinite; }
-        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.03); } 100% { transform: scale(1); } }
-        .card img { width: 100%; height: 280px; object-fit: cover; border-radius: 15px; }
+        .card { 
+            background: #1a0b2e; padding: 20px; border-radius: 25px; margin: 40px auto; max-width: 350px;
+            transition: transform 0.5s; border: 2px solid #ff4081;
+        }
+        .card:hover { transform: translateY(-15px) scale(1.02); }
+        .card img { width: 100%; height: 250px; object-fit: cover; border-radius: 15px; }
 
-        /* الموسيقى والقلوب */
-        .music-float { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); z-index: 1000; background: #ff4081; padding: 10px 20px; border-radius: 50px; }
-        .heart { position: fixed; color: #ff4081; pointer-events: none; z-index: 50; animation: up 5s linear infinite; }
-        @keyframes up { 0% { transform: translateY(100vh); opacity: 1; } 100% { transform: translateY(-10vh); opacity: 0; } }
+        /* القلوب - زدنا كثافتها */
+        .heart { position: fixed; color: #ff4081; font-size: 24px; pointer-events: none; z-index: 999; animation: float 4s linear infinite; }
+        @keyframes float { 0% { transform: translateY(100vh) scale(0); opacity: 1; } 50% { opacity: 1; } 100% { transform: translateY(-10vh) scale(1.5); opacity: 0; } }
+
+        .music-float { position: fixed; bottom: 30px; right: 30px; z-index: 2000; }
+        button { padding: 15px 30px; background: #ff4081; border: none; border-radius: 50px; color: white; font-weight: bold; cursor: pointer; }
     </style>
 </head>
 <body>
 
     <div id="lock-screen">
-        <h1 class="hb-main">Happy Birthday Malak</h1>
-        <input type="text" id="password" placeholder="اكتبي love">
-        <button onclick="checkPass()">افتحي المفاجأة</button>
+        <div class="glass-box">
+            <h1 class="hb-main">Happy Birthday Malak</h1>
+            <input type="password" id="password" placeholder="اكتبي love" style="padding:15px; border-radius:20px; border:none; width:200px; text-align:center;">
+            <br>
+            <button onclick="checkPass()">افتحي المفاجأة ❤️</button>
+        </div>
     </div>
 
     <div id="main-content">
-        <h1>عيد ميلاد سعيد يا ملك عمري 🎂</h1>
-        <div id="timer" style="color: #ff85a2; margin-bottom: 20px;"></div>
+        <h1>عيد ميلاد سعيد يا ملك قلبي 🎂</h1>
+        <div id="timer" style="font-size: 1.2rem; color: #ff85a2; margin-bottom: 30px;"></div>
         
-        <div class="card"><img src="3135284C-D0E2-438A-B210-BB2929FA1FCE.jpeg"><p>النهاردة عيد ميلاد الشخص اللي غير حياتي.</p></div>
-        <div class="card"><img src="546be1fc-98e4-48ef-8a81-63ae519b0be2.jpeg"><p>كل سنة وانتي جنبي يا أحلى ملوكة.</p></div>
-        <div class="card"><img src="IMG_4418.jpeg"><p>وجودك هو اللي بيحلي أيامي.</p></div>
-
-        <div style="background: #2d1b4e; padding: 30px; border-radius: 20px; max-width: 500px; margin: 40px auto; border: 1px solid #ff4081;">
-            <p>يا ملك، إنتي مش بس خطيبتي، إنتي دنيتي كلها.. كل سنة وانتي منورة حياتي.</p>
-            <div style="font-size: 1.5rem; color: #ff4081;">❤️ Mohamed ❤️</div>
-        </div>
+        <div class="card"><img src="3135284C-D0E2-438A-B210-BB2929FA1FCE.jpeg"><p>كل سنة وانتي أحلى حاجة في حياتي</p></div>
+        <div class="card"><img src="546be1fc-98e4-48ef-8a81-63ae519b0be2.jpeg"><p>ضحكتك هي اللي بتديني القوة</p></div>
+        <div class="card"><img src="IMG_4418.jpeg"><p>وجودك جنبي نعمة بشكر ربنا عليها</p></div>
+        <div class="card"><img src="ab984390-dba5-437e-898c-b5094c8d6d20.jpeg"><p>معاكي بحس إني ملكت الدنيا</p></div>
+        <div class="card"><img src="e622ddf3-b6c8-4430-8158-845f4eadf70f.jpeg"><p>بحبك يا كل دنيتي</p></div>
     </div>
 
     <div class="music-float">
         <audio id="bg-music" loop><source src="song.mp3" type="audio/mpeg"></audio>
-        <button onclick="document.getElementById('bg-music').play()" style="background:none; border:none; color:white; cursor:pointer;">▶️ شغلي الأغنية</button>
+        <button onclick="document.getElementById('bg-music').play()">🎵 شغلي الأغنية</button>
     </div>
 
     <script>
         function checkPass() {
             if(document.getElementById('password').value.toLowerCase() === 'love') {
-                document.getElementById('lock-screen').style.display = 'none';
+                document.getElementById('lock-screen').style.transform = 'translateY(-100%)';
                 document.getElementById('main-content').style.display = 'block';
-                setInterval(createHeart, 300); // قلوب مستمرة
-            }
+                document.getElementById('bg-music').play();
+                setInterval(createHeart, 200); // قلوب كثيفة
+            } else { alert("الباسورد خطأ يا روحي!"); }
         }
+
         function createHeart() {
             const h = document.createElement('div'); h.innerHTML = '❤️'; h.className = 'heart';
             h.style.left = Math.random() * 100 + 'vw';
             document.body.appendChild(h);
-            setTimeout(() => h.remove(), 5000);
+            setTimeout(() => h.remove(), 4000);
         }
-        window.addEventListener('scroll', () => {
-            document.querySelectorAll('.card').forEach(c => {
-                if(c.getBoundingClientRect().top < window.innerHeight - 100) c.classList.add('visible');
-            });
-        });
+
         setInterval(() => {
             const diff = new Date() - new Date("2024-06-28");
             document.getElementById('timer').innerText = `بقالنا ${Math.floor(diff / (1000*60*60*24))} يوم مع بعض ❤️`;
