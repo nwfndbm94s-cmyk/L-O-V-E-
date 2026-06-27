@@ -438,7 +438,31 @@ onclick="document.getElementById('bg-music').play()">
 
 <script>
 
-function checkPass(){
+function checkPass() {
+
+let password = document.getElementById(“password”).value;
+
+if (password.trim().toLowerCase() === “love”) {
+
+document.getElementById(“lock-screen”).style.display = “none”;
+
+document.getElementById(“main-content”).style.visibility = “visible”;
+
+document.getElementById(“main-content”).style.opacity = “1”;
+
+let music = document.getElementById(“bg-music”);
+
+if (music) {
+music.play().catch(() => {});
+}
+
+} else {
+
+alert(“الباسورد غلط ❤️”);
+
+}
+
+}
 
 const password =
 document.getElementById("password")
@@ -498,7 +522,7 @@ checkPass();
 const heartsContainer =
 document.querySelector('.hearts');
 
-function createHeart(const music = document.getElementById("bg-music");
+function createHeart();
 
 if(music){
     music.play();
