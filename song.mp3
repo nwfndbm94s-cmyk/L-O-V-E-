@@ -1,0 +1,7 @@
+<button onclick="document.getElementById('song').play()">
+    ▶ Play Song
+</button>
+
+<audio id="song">
+    <source src="song.mp3" type="audio/mpeg">
+</audio>
