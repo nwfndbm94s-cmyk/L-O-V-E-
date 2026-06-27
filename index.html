@@ -1,284 +1,201 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Malak 💖 Mohamed</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;600;900&display=swap" rel="stylesheet">
+<title>Mohamed & Malak 💖</title>
 
 <style>
-
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:'Cairo',sans-serif;
+font-family: 'Arial', sans-serif;
 }
 
 body{
-background:linear-gradient(135deg,#ffd1dc,#ffb6c1,#ffc0cb);
+background: linear-gradient(135deg,#ffb6c1,#ff69b4,#ffc0cb);
 overflow-x:hidden;
-text-align:center;
 color:white;
-}
-
-/* ===== LOCK SCREEN ===== */
-#lock-screen{
-position:fixed;
-inset:0;
-background:radial-gradient(circle,#ff9ecb,#ff4d88);
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-z-index:99999;
-}
-
-#title{
-font-size:3rem;
-font-weight:900;
-animation:glow 2s infinite alternate;
-}
-
-@keyframes glow{
-from{text-shadow:0 0 10px white;}
-to{text-shadow:0 0 30px white;}
-}
-
-#password{
-margin-top:20px;
-padding:15px;
-width:250px;
-border:none;
-border-radius:30px;
 text-align:center;
 }
 
-button{
+/* hearts animation */
+.heart{
+position:fixed;
+top:-10px;
+color:#ff4d6d;
+font-size:20px;
+animation: fall linear infinite;
+opacity:0.8;
+}
+
+@keyframes fall{
+0%{transform:translateY(-10vh) scale(1);}
+100%{transform:translateY(110vh) scale(1.5);}
+}
+
+/* fade in */
+.fade{
+opacity:0;
+transform:translateY(30px);
+animation:fadeIn 1.5s ease forwards;
+}
+
+@keyframes fadeIn{
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+/* header */
+h1{
+font-size:40px;
+margin-top:60px;
+}
+
+h2{
+margin-top:10px;
+font-weight:normal;
+}
+
+/* image style */
+.main-img, .memory-img{
+width:80%;
+max-width:350px;
+border-radius:20px;
+box-shadow:0 10px 30px rgba(0,0,0,0.3);
 margin-top:20px;
-padding:12px 30px;
-border:none;
-border-radius:30px;
-background:white;
-color:#ff4d88;
-font-weight:bold;
-cursor:pointer;
+transition:0.4s;
 }
 
-/* ===== MAIN ===== */
-.container{
-display:none;
+.main-img:hover,
+.memory-img:hover{
+transform:scale(1.05);
 }
 
-/* HERO */
-.hero{
-padding:40px 20px;
-}
-
-.hero h1{
-font-size:2.5rem;
-}
-
-.hero h2{
-margin-top:10px;
-}
-
-.date{
-margin-top:10px;
-font-weight:bold;
-}
-
-/* SWIPE GALLERY */
-.gallery{
-display:flex;
-overflow-x:auto;
-scroll-snap-type:x mandatory;
-gap:15px;
+/* section */
+section{
+margin-top:50px;
 padding:20px;
 }
 
-.card{
-min-width:80%;
-scroll-snap-align:center;
-background:rgba(255,255,255,0.15);
-border-radius:20px;
-padding:10px;
+/* memory grid */
+.grid{
+display:flex;
+flex-direction:column;
+gap:25px;
+align-items:center;
+}
+
+/* text box */
+.message{
+max-width:700px;
+margin:20px auto;
+background:rgba(255,255,255,0.2);
+padding:20px;
+border-radius:15px;
 backdrop-filter:blur(10px);
 }
 
-.card img{
-width:100%;
-border-radius:15px;
+/* footer */
+footer{
+margin-top:50px;
+padding:20px;
+font-size:18px;
 }
-
-.caption{
-font-size:1.3rem; /* 👈 كبير زي ما طلبت */
-margin-top:10px;
-font-weight:bold;
-}
-
-/* HEARTS */
-.heart{
-position:fixed;
-color:#ff4d88;
-font-size:20px;
-animation:float 6s linear infinite;
-pointer-events:none;
-}
-
-@keyframes float{
-0%{transform:translateY(100vh);opacity:1;}
-100%{transform:translateY(-10vh);opacity:0;}
-}
-
-/* COUNTER */
-.counter{
-margin:30px;
-font-size:1.3rem;
-}
-
-.big-msg{
-font-size:1.6rem;
-font-weight:bold;
-margin-top:10px;
-}
-
-/* FINAL MESSAGE */
-.final{
-margin:40px;
-padding:25px;
-background:rgba(255,255,255,0.2);
-border-radius:20px;
-font-size:1.3rem;
-line-height:2;
-}
-
-.final-big{
-font-size:1.7rem;
-font-weight:900;
-color:white;
-}
-
 </style>
 </head>
 
 <body>
 
-<!-- LOCK -->
-<div id="lock-screen">
-
-<div id="title">💖 Happy Birthday Malak 💖</div>
-
-<input id="password" placeholder="love">
-<button onclick="checkPass()">Unlock ❤️</button>
-
-</div>
-
-<!-- AUDIO -->
-<audio id="music" loop>
-<source src="song.mp3">
+<audio autoplay loop>
+<source src="song.mp3" type="audio/mp3">
 </audio>
 
-<!-- MAIN -->
-<div class="container" id="main">
+<h1 class="fade">💖 Mohamed & Malak 💖</h1>
+<h2 class="fade">🎂 Happy Birthday Malak 🎂</h2>
+<h3 class="fade">28 / 06 / 2005</h3>
 
-<div class="hero">
-<h1>💖 Mohamed & Malak 💖</h1>
-<h2>🎂 Happy Birthday Malak 🎂</h2>
-<div class="date">28 / 06 / 2005</div>
+<!-- main image -->
+<img class="main-img fade" src="3135284C-D0E2-438A-B210-BB2929FA1FCE.jpeg">
+
+<!-- memories -->
+<section>
+<h2 class="fade">📸 ذكرياتنا الحلوة</h2>
+
+<div class="grid">
+
+<div class="fade">
+<img class="memory-img" src="546be1fc-98e4-48ef-8a81-63ae519b0be2.jpeg">
+<p>أحلى لحظة جمعتنا 💕</p>
 </div>
 
-<!-- SWIPE GALLERY (بدون تكرار أول صورة) -->
-<div class="gallery">
-
-<div class="card">
-<img src="546be1fc-98e4-48ef-8a81-63ae519b0be2.jpeg">
-<div class="caption">أجمل لحظة ❤️</div>
+<div class="fade">
+<img class="memory-img" src="IMG_4418.jpeg">
+<p>ضحكتك هي سعادتي ❤️</p>
 </div>
 
-<div class="card">
-<img src="IMG_4418.jpeg">
-<div class="caption">ضحكتك حياة 💖</div>
+<div class="fade">
+<img class="memory-img" src="ab984390-dba5-437e-898c-b5094c8d6d20.jpeg">
+<p>كل يوم معاكي بداية حب جديد 💖</p>
 </div>
 
-<div class="card">
-<img src="ab984390-dba5-437e-898c-b5094c6d20.jpeg">
-<div class="caption">كل يوم أحبك أكثر 🌹</div>
-</div>
-
-<div class="card">
-<img src="e622ddf3-b6c8-4430-8158-845f4eadf70f.jpeg">
-<div class="caption">Forever ❤️</div>
-</div>
-
-</div>
-
-<!-- COUNTER -->
-<div class="counter">
-
-<div id="days"></div>
-
-<div class="big-msg">
-Happy Birthday my love ❤️<br><br>
-
-You are the most beautiful part of my life, and I’m grateful for every moment I get to spend with you. I wish you endless happiness, love, and success. I love you more every single day 💖
+<div class="fade">
+<img class="memory-img" src="e622ddf3-b6c8-4430-8158-845f4eadf70f.jpeg">
+<p>إنتي أجمل صدفة في حياتي 💘</p>
 </div>
 
 </div>
+</section>
 
-<!-- FINAL -->
-<div class="final">
+<!-- message -->
+<section class="message fade">
+<h2>💌 رسالة ليكي</h2>
+<p>
+ملك… 💖<br><br>
+كل سنة وانتي أجمل حاجة حصلت في حياتي.<br><br>
+وجودك جنبي نعمة بشكر ربنا عليها كل يوم.<br><br>
+ضحكتك وسعادتك هما أجمل حاجة في الدنيا بالنسبالي.<br><br>
+يارب العمر كله يكون في حب وفرحة وسعادة.<br><br>
+وأفضل أشوفك مبسوطة وناجحة ومحققة كل أحلامك.<br><br>
+كل سنة وانتي معايا ينور عيني ❤️
+</p>
+</section>
 
-<div class="final-big">💖 Mohamed ❤️ Malak 💖</div>
-
-كل سنة وانتي حياتي ❤️
-
-</div>
-
-</div>
+<footer class="fade">
+💖 Mohamed Loves Malak Forever 💖
+</footer>
 
 <script>
+// floating hearts
+function createHeart(){
+const heart = document.createElement("div");
+heart.classList.add("heart");
+heart.innerHTML = "💗";
 
-/* OPEN */
-function checkPass(){
+heart.style.left = Math.random()*100 + "vw";
+heart.style.animationDuration = (3 + Math.random()*5) + "s";
 
-let p=document.getElementById("password").value.toLowerCase();
+document.body.appendChild(heart);
 
-if(p==="love"){
-
-document.getElementById("lock-screen").style.display="none";
-document.getElementById("main").style.display="block";
-
-/* MUSIC */
-document.getElementById("music").play().catch(()=>{});
-
-/* HEAVY HEARTS */
-setInterval(()=>{
-for(let i=0;i<5;i++){
-let h=document.createElement("div");
-h.className="heart";
-h.innerHTML="💖";
-h.style.left=Math.random()*100+"vw";
-document.body.appendChild(h);
-setTimeout(()=>h.remove(),6000);
-}
-},300);
-
-}else{
-alert("Wrong password ❤️");
-}
+setTimeout(()=>{heart.remove();},8000);
 }
 
-/* COUNTER FROM 21/12/2025 */
-let start=new Date("2025-12-21");
-setInterval(()=>{
-let now=new Date();
-let diff=Math.floor((now-start)/(1000*60*60*24));
-document.getElementById("days").innerHTML="Days since 21/12/2025: "+diff;
-},1000);
+setInterval(createHeart,300);
 
+// smooth scroll fade
+const elements = document.querySelectorAll('.fade');
+window.addEventListener('scroll',()=>{
+elements.forEach(el=>{
+const rect = el.getBoundingClientRect();
+if(rect.top < window.innerHeight - 50){
+el.style.opacity = 1;
+el.style.transform = "translateY(0)";
+}
+});
+});
 </script>
 
 </body>
