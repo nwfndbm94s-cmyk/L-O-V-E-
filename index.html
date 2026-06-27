@@ -15,272 +15,125 @@ margin:0;
 padding:0;
 box-sizing:border-box;
 font-family:'Cairo',sans-serif;
-scroll-behavior:smooth;
 }
-<audio id="bg-music" loop>
-    <source src="song.mp3" type="audio/mpeg">
-</audio>
+
 body{
 background:linear-gradient(135deg,#ffd1dc,#ffb6c1,#ffc0cb);
 overflow-x:hidden;
-color:white;
 text-align:center;
+color:white;
 }
 
-/* شاشة القفل */
-
+/* LOCK SCREEN */
 #lock-screen{
 position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
+inset:0;
 background:linear-gradient(135deg,#ffb6c1,#ffc0cb,#ffd1dc);
 display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
-z-index:99999;
+z-index:999999;
 }
 
-.lock-title{
-font-size:3rem;
-font-weight:900;
-color:white;
+#lock-screen h1{
+font-size:2.5rem;
 text-shadow:0 0 20px #ff4d88;
-margin-bottom:20px;
-}
-
-.lock-text{
-font-size:1.2rem;
-margin-bottom:20px;
 }
 
 #password{
-width:280px;
+margin-top:20px;
 padding:15px;
+width:260px;
 border:none;
 border-radius:30px;
-outline:none;
 text-align:center;
-font-size:1rem;
+outline:none;
 }
 
 #lock-screen button{
 margin-top:20px;
-padding:15px 35px;
+padding:12px 30px;
 border:none;
 border-radius:30px;
 background:#ff4d88;
 color:white;
-font-size:1rem;
+font-size:16px;
 cursor:pointer;
-transition:.3s;
 }
 
-#lock-screen button:hover{
-transform:scale(1.05);
-}
-
-/* القلوب */
-
-.hearts{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-pointer-events:none;
-z-index:0;
-overflow:hidden;
-}
-
-.heart{
-position:absolute;
-bottom:-50px;
-color:#ff4d88;
-font-size:25px;
-animation:floatUp linear infinite;
-opacity:.8;
-}
-
-@keyframes floatUp{
-0%{
-transform:translateY(0) rotate(0deg);
-opacity:0;
-}
-20%{
-opacity:1;
-}
-100%{
-transform:translateY(-120vh) rotate(360deg);
-opacity:0;
-}
-}
-
+/* MAIN */
 .container{
-position:relative;
-z-index:2;
-padding:30px 20px;
 display:none;
+padding:20px;
 }
 
 .hero{
-min-height:100vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-animation:fadeIn 2s ease;
+padding-top:60px;
 }
 
-h1{
-font-size:3rem;
-font-weight:900;
-text-shadow:0 0 15px rgba(255,255,255,.7);
+.hero h1{
+font-size:2.5rem;
 }
 
-h2{
-font-size:2rem;
-margin-top:15px;
+.hero h2{
+margin-top:10px;
+font-size:1.5rem;
 }
 
 .date{
-font-size:1.4rem;
-margin-top:15px;
-font-weight:bold;
+margin-top:10px;
 }
 
-.main-image{
-width:90%;
-max-width:450px;
-margin-top:30px;
-border-radius:30px;
-box-shadow:0 15px 40px rgba(0,0,0,.25);
-transition:.4s;
-}
-
-.main-image:hover{
-transform:scale(1.04);
-}
-
-.section{
-padding:80px 20px;
-animation:fadeIn 2s ease;
-}
-
-.section-title{
-font-size:2.3rem;
-margin-bottom:40px;
-font-weight:800;
-}
-
-.gallery{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:25px;
-max-width:1200px;
-margin:auto;
-}
-
-.card{
-background:rgba(255,255,255,.15);
-backdrop-filter:blur(10px);
+.main-img{
+width:80%;
+max-width:400px;
 border-radius:25px;
-padding:15px;
-transition:.4s;
+margin-top:20px;
+box-shadow:0 10px 30px rgba(0,0,0,0.3);
 }
 
-.card:hover{
-transform:translateY(-10px);
+/* CARDS */
+.card{
+background:rgba(255,255,255,0.15);
+margin:20px auto;
+padding:15px;
+border-radius:20px;
+max-width:350px;
+backdrop-filter:blur(10px);
 }
 
 .card img{
 width:100%;
-border-radius:20px;
-box-shadow:0 10px 25px rgba(0,0,0,.25);
-transition:.4s;
+border-radius:15px;
 }
 
-.card img:hover{
-transform:scale(1.05);
+/* HEARTS */
+.heart{
+position:fixed;
+color:#ff4d88;
+font-size:20px;
+animation:up 6s linear infinite;
+pointer-events:none;
 }
 
-.caption{
-margin-top:15px;
-font-size:1.1rem;
-font-weight:600;
+@keyframes up{
+0%{transform:translateY(100vh);opacity:1;}
+100%{transform:translateY(-10vh);opacity:0;}
 }
 
-.love-letter{
-max-width:900px;
-margin:auto;
-background:rgba(255,255,255,.15);
-padding:35px;
-border-radius:30px;
-backdrop-filter:blur(12px);
-font-size:1.3rem;
-line-height:2;
-}
-
-footer{
-padding:40px;
-font-size:1.3rem;
-font-weight:bold;
-}
-
-.music-btn{
+/* MUSIC BUTTON */
+#musicBtn{
 position:fixed;
 bottom:20px;
 left:50%;
 transform:translateX(-50%);
-z-index:1000;
 background:#ff4d88;
 border:none;
-padding:12px 25px;
+padding:10px 25px;
 border-radius:50px;
 color:white;
 cursor:pointer;
-font-size:16px;
-}
-
-@keyframes fadeIn{
-from{
-opacity:0;
-transform:translateY(30px);
-}
-to{
-opacity:1;
-transform:translateY(0);
-}
-}
-
-@media(max-width:768px){
-
-h1{
-font-size:2.2rem;
-}
-
-h2{
-font-size:1.5rem;
-}
-
-.section-title{
-font-size:1.8rem;
-}
-
-.love-letter{
-font-size:1.1rem;
-}
-
-.lock-title{
-font-size:2rem;
-}
-
-#password{
-width:220px;
-}
-
 }
 
 </style>
@@ -288,271 +141,102 @@ width:220px;
 
 <body>
 
-<!-- شاشة القفل -->
-
+<!-- LOCK SCREEN -->
 <div id="lock-screen">
+<h1>💖 Happy Birthday Malak 💖</h1>
+<p>اكتب الباسورد</p>
 
-<h1 class="lock-title">
-💖 Happy Birthday Malak 💖
-</h1>
-
-<p class="lock-text">
-أدخلي الباسورد يا ملوكة ❤️
-</p>
-
-<input
-type="text"
-id="password"
-placeholder="اكتبي love">
-
-<button onclick="checkPass()">
-افتحي المفاجأة 🎁
-</button>
-
+<input type="text" id="password" placeholder="love">
+<button onclick="checkPass()">افتحي المفاجأة 🎁</button>
 </div>
 
-<!-- الموسيقى -->
-
+<!-- MUSIC -->
 <audio id="bg-music" loop>
 <source src="song.mp3" type="audio/mpeg">
 </audio>
 
-<!-- القلوب -->
+<!-- MAIN -->
+<div class="container" id="main-content">
 
-<di<div class="container" id="main-content" style="visibility:hidden;opacity:0;transition:1s;">
+<div class="hero">
+<h1>💖 Mohamed & Malak 💖</h1>
+<h2>🎂 Happy Birthday Malak 🎂</h2>
+<div class="date">28 / 06 / 2005</div>
 
-<!-- المحتوى -->
-
-<div class="container">
-
-<section class="hero">
-
-<h1>
-💖 Mohamed & Malak 💖
-</h1>
-
-<h2>
-🎂 Happy Birthday Malak 🎂
-</h2>
-
-<div class="date">
-28 / 06 / 2005
+<img class="main-img" src="3135284C-D0E2-438A-B210-BB2929FA1FCE.jpeg">
 </div>
-
-<img
-class="main-image"
-src="3135284C-D0E2-438A-B210-BB2929FA1FCE.jpeg"
-alt="Malak">
-
-</section>
-
-<section class="section">
-
-<div class="section-title">
-📸 ذكرياتنا الحلوة
-</div>
-
-<div class="gallery">
 
 <div class="card">
 <img src="3135284C-D0E2-438A-B210-BB2929FA1FCE.jpeg">
-<div class="caption">
-أجمل صورة وأجمل ذكرى وأجمل إحساس ❤️
-</div>
+<p>أجمل بداية وأجمل حب ❤️</p>
 </div>
 
 <div class="card">
 <img src="546be1fc-98e4-48ef-8a81-63ae519b0be2.jpeg">
-<div class="caption">
-كل لحظة معاكي بتتحول لذكرى جميلة 💖
-</div>
+<p>كل لحظة معاكي فرحة 💖</p>
 </div>
 
 <div class="card">
 <img src="IMG_4418.jpeg">
-<div class="caption">
-وجودك في حياتي هو أجمل هدية من ربنا 🌹
-</div>
+<p>وجودك نعمة 🌹</p>
 </div>
 
 <div class="card">
 <img src="ab984390-dba5-437e-898c-b5094c8d6d20.jpeg">
-<div class="caption">
-بحب تفاصيلك وضحكتك وكل حاجة فيكي 🥰
-</div>
+<p>بحبك بكل تفاصيلك 🥰</p>
 </div>
 
 <div class="card">
 <img src="e622ddf3-b6c8-4430-8158-845f4eadf70f.jpeg">
-<div class="caption">
-ومهما يعدي وقت هفضل أحبك أكتر كل يوم ❤️
-</div>
+<p>إنتي حياتي ❤️</p>
 </div>
 
 </div>
 
-</section>
-
-<section class="section">
-
-<div class="section-title">
-💌 رسالة ليكي
-</div>
-
-<div class="love-letter">
-
-ملك… 💖
-<br><br>
-
-كل سنة وانتي أجمل حاجة حصلت في حياتي.
-<br><br>
-
-وجودك جنبي نعمة بشكر ربنا عليها كل يوم.
-<br><br>
-
-ضحكتك وسعادتك هما أجمل حاجة في الدنيا بالنسبالي.
-<br><br>
-
-يارب العمر كله يكون في حب وفرحة وسعادة.
-<br><br>
-
-وأفضل أشوفك مبسوطة وناجحة ومحققة كل أحلامك.
-<br><br>
-
-كل سنة وانتي معايا ينور عيني ❤️
-
-</div>
-
-</section>
-
-<footer>
-💖 Mohamed Loves Malak Forever 💖
-</footer>
-
-</div>
-
-<button class="music-btn"
-onclick="document.getElementById('bg-music').play()">
-🎵 شغلي الأغنية
+<!-- MUSIC BUTTON -->
+<button id="musicBtn" onclick="document.getElementById('bg-music').play()">
+🎵 تشغيل الأغنية
 </button>
 
 <script>
 
-function checkPass() {
+/* CHECK PASSWORD - FIXED 100% */
+function checkPass(){
 
-let password = document.getElementById(“password”).value;
+const pass = document.getElementById("password").value.trim().toLowerCase();
 
-if (password.trim().toLowerCase() === “love”) {
+if(pass === "love"){
 
-document.getElementById(“lock-screen”).style.display = “none”;
+document.getElementById("lock-screen").style.display = "none";
+document.getElementById("main-content").style.display = "block";
 
-document.getElementById(“main-content”).style.visibility = “visible”;
-
-document.getElementById(“main-content”).style.opacity = “1”;
-
-let music = document.getElementById(“bg-music”);
-
-if (music) {
-music.play().catch(() => {});
-}
-
-} else {
-
-alert(“الباسورد غلط ❤️”);
-
-}
-
-}
-
-const password =
-document.getElementById("password")
-.value
-.trim()
-.toLowerCase();
-
-if(password === "love"){
-
-const lockScreen =
-document.getElementById("lock-screen");
-
-const content =
-document.getElementById("main-content");
-
-lockScreen.style.opacity = "0";
-
-setTimeout(()=>{
-
-lockScreen.style.display = "none";
-
-content.style.visibility = "visible";
-
-content.style.opacity = "1";
-
-const music =
-document.getElementById("bg-music");
-
+/* PLAY MUSIC (iPhone fix) */
+const music = document.getElementById("bg-music");
 if(music){
 music.play().catch(()=>{});
 }
 
-},800);
+/* HEARTS */
+setInterval(()=>{
+const h = document.createElement("div");
+h.innerHTML="💖";
+h.className="heart";
+h.style.left=Math.random()*100+"vw";
+document.body.appendChild(h);
+setTimeout(()=>h.remove(),6000);
+},300);
 
 }else{
-
-alert("الباسورد غلط يا ملوكة ❤️");
-
+alert("الباسورد غلط ❤️");
+}
 }
 
-}
-
-document
-.getElementById("password")
-.addEventListener("keypress",function(e){
-
-if(e.key === "Enter"){
+/* ENTER KEY */
+document.getElementById("password").addEventListener("keypress",function(e){
+if(e.key==="Enter"){
 checkPass();
 }
-
 });
-
-}
-
-/* قلوب متحركة */
-
-const heartsContainer =
-document.querySelector('.hearts');
-
-function createHeart();
-
-if(music){
-    music.play();
-}){
-
-const heart =
-document.createElement('div');
-
-heart.classList.add('heart');
-
-heart.innerHTML='💖';
-
-heart.style.left =
-Math.random()*100+'vw';
-
-heart.style.fontSize =
-(20+Math.random()*30)+'px';
-
-heart.style.animationDuration =
-(5+Math.random()*6)+'s';
-
-heartsContainer.appendChild(heart);
-
-setTimeout(()=>{
-heart.remove();
-},12000);
-
-}
-
-setInterval(createHeart,300);
 
 </script>
 
