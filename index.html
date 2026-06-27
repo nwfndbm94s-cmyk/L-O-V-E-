@@ -4,91 +4,279 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy Birthday Malak ❤️</title>
+
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap');
-        body { margin: 0; background: #0f0518; color: white; font-family: 'Tajawal', sans-serif; overflow-x: hidden; }
-        
+
+        body {
+            margin: 0;
+            background: linear-gradient(135deg, #ffe6f0, #fff5fa);
+            color: #5a2a4a;
+            font-family: 'Tajawal', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* دخول ناعم */
+        body {
+            animation: fadeBody 1s ease-in-out;
+        }
+        @keyframes fadeBody {
+            from { opacity: 0; transform: scale(1.02); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
         /* شاشة القفل */
-        #lock-screen { position: fixed; top:0; left:0; width:100%; height:100%; background: #1a0b2e; display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 9999; text-align: center; }
-        .hb-main { font-size: 3.5rem; color: #ff4081; text-shadow: 0 0 20px #ff4081; margin-bottom: 20px; }
-        input { padding: 15px; border-radius: 25px; border: none; width: 250px; text-align: center; }
-        button { padding: 15px 40px; margin-top: 20px; background: #ff4081; border: none; border-radius: 25px; color: white; cursor: pointer; transition: 0.3s; }
+        #lock-screen {
+            position: fixed;
+            top:0; left:0;
+            width:100%; height:100%;
+            background: linear-gradient(135deg, #ffe0ef, #ffd1e8);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            text-align: center;
+            opacity: 0;
+            animation: lockFade 0.8s forwards;
+        }
+
+        @keyframes lockFade {
+            from { opacity: 0; transform: scale(1.05); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .hb-main {
+            font-size: 3.5rem;
+            color: #ff4d88;
+            text-shadow: 0 0 20px #ff99bb;
+            margin-bottom: 20px;
+        }
+
+        input {
+            padding: 15px;
+            border-radius: 25px;
+            border: none;
+            width: 250px;
+            text-align: center;
+        }
+
+        button {
+            padding: 15px 40px;
+            margin-top: 20px;
+            background: #ff4d88;
+            border: none;
+            border-radius: 25px;
+            color: white;
+            cursor: pointer;
+            transition: 0.3s;
+        }
 
         /* المحتوى */
-        #main-content { display: none; padding: 20px; text-align: center; }
-        .hero-img { width: 200px; height: 200px; border-radius: 50%; border: 4px solid #ff4081; margin-bottom: 20px; }
-        .card { background: #2d1b4e; padding: 15px; border-radius: 20px; margin: 30px auto; max-width: 350px; opacity: 0; transform: translateY(50px); transition: 0.8s; }
-        .card.visible { opacity: 1; transform: translateY(0); }
-        .card img { width: 100%; height: 280px; object-fit: cover; border-radius: 15px; }
+        #main-content {
+            display: none;
+            padding: 20px;
+            text-align: center;
+        }
 
-        /* الفوتر والموسيقى */
-        .music-float { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); z-index: 1000; background: rgba(255,64,129,0.9); padding: 10px 20px; border-radius: 50px; }
-        .heart { position: fixed; color: #ff4081; pointer-events: none; z-index: 50; animation: up 6s linear infinite; }
-        @keyframes up { 0% { transform: translateY(100vh); opacity: 1; } 100% { transform: translateY(-10vh); opacity: 0; } }
+        /* الصورة الرئيسية خلفية */
+        .hero-bg {
+            position: relative;
+            width: 100%;
+            height: 320px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            border-radius: 25px;
+        }
+
+        .hero-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.7; /* 70% وضوح */
+            transform: scale(1.1);
+        }
+
+        .hero-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            text-shadow: 0 0 15px black;
+            font-size: 1.5rem;
+        }
+
+        .hero-img { display: none; }
+
+        /* الكروت */
+        .card {
+            background: #fff0f6;
+            padding: 15px;
+            border-radius: 20px;
+            margin: 30px auto;
+            max-width: 350px;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: 0.8s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .card img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 15px;
+        }
+
+        /* قلوب */
+        .heart {
+            position: fixed;
+            color: #ff4d88;
+            pointer-events: none;
+            z-index: 50;
+            animation: up 6s linear infinite;
+            opacity: 0.7;
+        }
+
+        @keyframes up {
+            0% { transform: translateY(100vh); opacity: 1; }
+            100% { transform: translateY(-10vh); opacity: 0; }
+        }
+
+        /* قلوب حول الصور */
+        .img-heart {
+            position: absolute;
+            color: #ff4d88;
+            opacity: 0.7;
+            animation: float 3s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%,100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* الموسيقى */
+        .music-float {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            background: rgba(255,77,136,0.9);
+            padding: 10px 20px;
+            border-radius: 50px;
+        }
+
+        /* الرسالة الأخيرة */
+        .final-message {
+            background: #fff0f6;
+            padding: 40px 20px;
+            border-radius: 30px;
+            margin: 50px auto;
+            max-width: 600px;
+            border: 1px solid #ff4d88;
+            font-size: 1.4rem;
+        }
     </style>
 </head>
+
 <body>
 
-    <div id="lock-screen">
-        <h1 class="hb-main">Happy Birthday Malak</h1>
-        <p> الباسورد يا ملوكة ❤️</p>
-        <input type="text" id="password" placeholder="اكتبي love">
-        <button onclick="checkPass()">دوسيي هنا بسرعه🌚 </button>
+<div id="lock-screen">
+    <h1 class="hb-main">Happy Birthday Malak</h1>
+    <p> الباسورد يا ملوكة ❤️</p>
+    <input type="text" id="password" placeholder="اكتبي love">
+    <button onclick="checkPass()">دوسيي هنا بسرعه🌚 </button>
+</div>
+
+<div id="main-content">
+
+    <!-- الخلفية بالصورة الأولى -->
+    <div class="hero-bg">
+        <img src="3135284C-D0E2-438A-B210-BB2929FA1FCE.jpeg">
+        <div class="hero-text">عيد ميلاد سعيد يا ملك عمري 🎂</div>
     </div>
 
-    <div id="main-content">
-        <h1>عيد ميلاد سعيد يا ملك عمري 🎂</h1>
-        <div id="timer" style="font-size: 1.2rem; color: #ff85a2;"></div>
-        <img src="3135284C-D0E2-438A-B210-BB2929FA1FCE.jpeg" class="hero-img">
+    <div id="timer" style="font-size: 1.2rem; color: #ff4d88;"></div>
 
-        <div class="card fade-in"><img src="3135284C-D0E2-438A-B210-BB2929FA1FCE.jpeg"><p>النهاردة مش أي يوم.. ده يوم ميلاد الشخص اللي خلاني أحس إن الدنيا لسه بخير.</p></div>
-        <div class="card fade-in"><img src="546be1fc-98e4-48ef-8a81-63ae519b0be2.jpeg"><p>مش عارف أقول إيه، بس بجد وجودك في يومي بيغير كل حاجة للأحسن.</p></div>
-        <div class="card fade-in"><img src="IMG_4418.jpeg"><p>كل سنة وانتي معايا، وكل سنة وانتي بتكبري قدامي وبحس إني محظوظ إني في حياتك.</p></div>
-        <div class="card fade-in"><img src="ab984390-dba5-437e-898c-b5094c8d6d20.jpeg"><p>ربنا ما يحرمني من ضحكتك اللي بتفصلني عن أي هم.</p></div>
-        
-        <div style="background: #2d1b4e; padding: 40px 20px; border-radius: 30px; margin: 50px auto; max-width: 600px; border: 1px solid #ff4081;">
-            <h2 style="color: #ff85a2;">💌 رسالة من القلب</h2>
-            <p style="line-height: 2; font-size: 1.2rem;">
-                يا ملك، النهاردة مش مجرد تاريخ عيد ميلاد، النهاردة هو اليوم اللي اتولدت فيه الشخصية اللي خلت لحياتي معنى حقيقي. 
-                عايزك تعرفي إنك مش بس خطيبتي، إنتي البيت اللي بحس فيه بالأمان، وإنتي الضحكة اللي بتطمني بعد أي يوم طويل.
-                في عيد ميلادك ده، بوعدك إني هفضل دايماً جنبك وساندك، وبحبك أكتر كل يوم. 
-                شكراً إنك اخترتيني أكون جزء من حياتك، الدنيا من غيرك ولا حاجة، وأنا بيكي بقيت أسعد واحد في الكون.
-                كل سنة وانتي حبيبتي وشريكة عمري! 💖
-            </p>
-            <div style="margin-top: 30px; font-size: 1.8rem; font-weight: bold; color: #ff4081;">❤️ Mohamed ❤️</div>
-            <p>I Love You Forever & Always</p>
-        </div>
+    <div class="card fade-in"><img src="3135284C-D0E2-438A-B210-BB2929FA1FCE.jpeg"><p>النهاردة مش أي يوم.. ده يوم ميلاد الشخص اللي خلاني أحس إن الدنيا لسه بخير.</p></div>
+    <div class="card fade-in"><img src="546be1fc-98e4-48ef-8a81-63ae519b0be2.jpeg"><p>مش عارف أقول إيه، بس بجد وجودك في يومي بيغير كل حاجة للأحسن.</p></div>
+    <div class="card fade-in"><img src="IMG_4418.jpeg"><p>كل سنة وانتي معايا، وكل سنة وانتي بتكبري قدامي وبحس إني محظوظ.</p></div>
+    <div class="card fade-in"><img src="ab984390-dba5-437e-898c-b5094c8d6d20.jpeg"><p>ربنا ما يحرمني من ضحكتك 💖</p></div>
+
+    <div class="final-message">
+        <h2>💌 رسالة من القلب</h2>
+        <p>
+            يا ملك... إنتي كل حاجة حلوة في حياتي ❤️
+            بحبك وبوعدك أكون جنبك دايمًا.
+        </p>
+        <div style="font-size:2.2rem; font-weight:bold; color:#ff4d88;">❤️ Mohamed ❤️</div>
     </div>
 
-    <div class="music-float">
-        <audio id="bg-music" loop><source src="song.mp3" type="audio/mpeg"></audio>
-        <button onclick="document.getElementById('bg-music').play()" style="margin:0; padding: 5px 15px;">▶️ شغلي الأغنية</button>
-    </div>
+</div>
 
-    <script>
-        function checkPass() {
-            if(document.getElementById('password').value.toLowerCase() === 'love') {
-                document.getElementById('lock-screen').style.display = 'none';
-                document.getElementById('main-content').style.display = 'block';
-                setInterval(createHeart, 300);
-            } else { alert("الباسورد غلط يا روحي، جربي love"); }
-        }
-        function createHeart() {
-            const h = document.createElement('div'); h.innerHTML = '❤️'; h.className = 'heart';
-            h.style.left = Math.random() * 100 + 'vw';
-            document.body.appendChild(h);
-            setTimeout(() => h.remove(), 6000);
-        }
-        window.addEventListener('scroll', () => {
-            document.querySelectorAll('.card').forEach(c => {
-                if(c.getBoundingClientRect().top < window.innerHeight - 100) c.classList.add('visible');
-            });
-        });
-        setInterval(() => {
-            const diff = new Date() - new Date("2024-06-28");
-            const d = Math.floor(diff / (1000*60*60*24));
-            document.getElementById('timer').innerText = `بقالنا ${d} يوم مع بعض ❤️`;
-        }, 1000);
-    </script>
+<div class="music-float">
+    <audio id="bg-music" loop>
+        <source src="song.mp3" type="audio/mpeg">
+    </audio>
+    <button onclick="document.getElementById('bg-music').play()">▶️ شغلي الأغنية</button>
+</div>
+
+<script>
+
+function checkPass() {
+    if(document.getElementById('password').value.toLowerCase() === 'love') {
+        document.getElementById('lock-screen').style.display = 'none';
+        document.getElementById('main-content').style.display = 'block';
+        setInterval(createHeart, 300);
+    } else {
+        alert("الباسورد غلط يا روحي ❤️");
+    }
+}
+
+/* قلوب */
+function createHeart() {
+    const h = document.createElement('div');
+    h.innerHTML = '❤️';
+    h.className = 'heart';
+    h.style.left = Math.random() * 100 + 'vw';
+    document.body.appendChild(h);
+    setTimeout(() => h.remove(), 6000);
+}
+
+/* ظهور الكروت */
+window.addEventListener('scroll', () => {
+    document.querySelectorAll('.card').forEach(c => {
+        if(c.getBoundingClientRect().top < window.innerHeight - 100)
+            c.classList.add('visible');
+    });
+});
+
+/* عداد الأيام */
+setInterval(() => {
+    const diff = new Date() - new Date("2024-06-28");
+    const d = Math.floor(diff / (1000*60*60*24));
+    document.getElementById('timer').innerText = `بقالنا ${d} يوم مع بعض ❤️`;
+}, 1000);
+
+/* حركة الصور مع الصباع */
+document.addEventListener('mousemove', (e) => {
+    document.querySelectorAll('.card img').forEach(img => {
+        let x = (e.clientX / window.innerWidth - 0.5) * 10;
+        let y = (e.clientY / window.innerHeight - 0.5) * 10;
+        img.style.transform = `translate(${x}px, ${y}px) scale(1.02)`;
+    });
+});
+
+</script>
+
 </body>
 </html>
