@@ -148,7 +148,27 @@ opacity:0;
 
 Unlock 🔓
 
-<p style="margin-top:15px;">Password : love</p>
+function unlockSite(){
+
+let pass = document.getElementById(“pass”).value.trim();
+
+if(pass.toLowerCase() === “love”){
+
+document.getElementById(“lockScreen”).style.display = “none”;
+
+let music = document.getElementById(“music”);
+
+if(music){
+music.play().catch(()=>{});
+}
+
+}else{
+
+alert(“الباسورد الصحيح هو: Love ❤️”);
+
+}
+
+}
 </div>
 </div>
 <audio id="music" loop>
