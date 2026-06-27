@@ -5,67 +5,69 @@
     <title>Happy Birthday Malak ❤️</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&family=Dancing+Script:wght@700&display=swap');
-        body { margin: 0; background: #fff0f5; color: #5d4037; font-family: 'Tajawal', sans-serif; overflow-x: hidden; }
+        body { margin: 0; background: #fff5f7; color: #5d4037; font-family: 'Tajawal', sans-serif; overflow-x: hidden; }
 
-        /* شاشة القفل */
-        #lock-screen { position: fixed; top:0; left:0; width:100%; height:100%; background: linear-gradient(135deg, #fce4ec, #f8bbd0); display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 9999; }
-        .glass-box { background: rgba(255, 255, 255, 0.5); backdrop-filter: blur(10px); padding: 40px; border-radius: 30px; text-align: center; }
-        
+        /* شاشة القفل المزخرفة */
+        #lock-screen { position: fixed; top:0; left:0; width:100%; height:100%; background: linear-gradient(135deg, #fce4ec, #ffffff); display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 9999; }
+        .lock-box { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(15px); padding: 50px; border-radius: 50px; border: 2px solid #ff85a2; text-align: center; box-shadow: 0 10px 40px rgba(255,133,162,0.2); }
+        h1 { font-family: 'Dancing Script'; color: #d81b60; font-size: 3rem; }
+
         /* المحتوى */
         #main-content { display: none; padding: 20px; text-align: center; }
-        .hero-banner { position: relative; margin-bottom: 40px; }
-        .hero-banner img { width: 100%; max-width: 600px; height: 400px; object-fit: cover; border-radius: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-        .hero-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); font-family: 'Dancing Script'; font-size: 3rem; }
+        .hero { position: relative; margin-bottom: 50px; }
+        .hero img { width: 100%; max-width: 700px; border-radius: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .hero h2 { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; font-family: 'Dancing Script'; font-size: 3.5rem; text-shadow: 0 0 20px rgba(0,0,0,0.3); }
 
-        .card { background: white; padding: 20px; border-radius: 30px; margin: 30px auto; max-width: 450px; box-shadow: 0 10px 20px rgba(0,0,0,0.05); transition: 0.8s; opacity: 0; transform: translateY(50px); }
+        .card { background: white; padding: 20px; border-radius: 40px; margin: 30px auto; max-width: 500px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: 0.8s; opacity: 0; transform: translateY(50px); }
         .card.visible { opacity: 1; transform: translateY(0); }
-        .card img { width: 100%; height: 300px; object-fit: cover; border-radius: 20px; }
+        .card img { width: 100%; height: 350px; object-fit: cover; border-radius: 30px; }
 
-        /* مشغل الموسيقى العريض */
-        .music-bar { position: fixed; bottom: 0; left: 0; width: 100%; background: #d81b60; padding: 15px; text-align: center; color: white; z-index: 1000; }
+        /* شريط الموسيقى العريض */
+        .music-bar { position: fixed; bottom: 0; left: 0; width: 100%; background: rgba(216, 27, 96, 0.95); padding: 20px 0; color: white; z-index: 1000; text-align: center; }
         
-        .heart { position: fixed; color: #ff4081; pointer-events: none; z-index: 50; animation: float 5s linear infinite; }
+        .heart { position: fixed; color: #ff4081; pointer-events: none; z-index: 50; animation: float 6s linear infinite; }
         @keyframes float { 0% { transform: translateY(100vh); opacity: 1; } 100% { transform: translateY(-10vh); opacity: 0; } }
     </style>
 </head>
 <body>
 
     <div id="lock-screen">
-        <div class="glass-box">
+        <div class="lock-box">
             <h1>عيد ميلاد ملوكة ❤️</h1>
-            <input type="text" id="password" placeholder="اكتبي love" style="padding: 15px; border-radius: 20px; border: none; width: 200px; text-align: center;">
-            <br><button onclick="checkPass()" style="margin-top: 20px; padding: 15px 40px; background: #d81b60; border: none; color: white; border-radius: 20px; cursor: pointer;">افتحي المفاجأة</button>
+            <p>اكتبي الباسورد عشان تفتحي المفاجأة</p>
+            <input type="text" id="password" placeholder="اكتبي love" style="padding: 15px; border-radius: 20px; border: 1px solid #ff85a2; width: 200px; text-align: center;">
+            <br><button onclick="checkPass()" style="margin-top: 20px; padding: 15px 50px; background: #d81b60; border: none; color: white; border-radius: 30px; cursor: pointer; font-size: 1.1rem;">افتحي الهدية</button>
         </div>
     </div>
 
     <div id="main-content">
-        <div class="hero-banner">
+        <div class="hero">
             <img src="3135284C-D0E2-438A-B210-BB2929FA1FCE.jpeg">
-            <div class="hero-text">Happy Birthday Malak</div>
+            <h2>Happy Birthday Malak</h2>
         </div>
 
-        <div class="card"><img src="3135284C-D0E2-438A-B210-BB2929FA1FCE.jpeg"><p>في يوم ميلادك، بحب أقولك إنك أجمل هدية في حياتي.</p></div>
-        <div class="card"><img src="546be1fc-98e4-48ef-8a81-63ae519b0be2.jpeg"><p>ضحكتك هي السبب اللي بيخليني أشوف الدنيا حلوة.</p></div>
-        <div class="card"><img src="IMG_4418.jpeg"><p>كل سنة وانتي السند، والحب، والبيت اللي بيلجأ له قلبي.</p></div>
-        <div class="card"><img src="ab984390-dba5-437e-898c-b5094c8d6d20.jpeg"><p>مش مجرد خطيبة، انتي الروح اللي مكملة حياتي.</p></div>
-        <div class="card"><img src="e622ddf3-b6c8-4430-8158-845f4eadf70f.jpeg"><p>ربنا ما يحرمني من وجودك في أي عيد ميلاد جاي.</p></div>
-        <div class="card"><img src="3135284C-D0E2-438A-B210-BB2929FA1FCE.jpeg"><p>بحبك يا كل اللي ليا في الدنيا دي.</p></div>
+        <div class="card"><img src="3135284C-D0E2-438A-B210-BB2929FA1FCE.jpeg"><p>كل سنة وانتي دنيتي اللي بعيش فيها.</p></div>
+        <div class="card"><img src="546be1fc-98e4-48ef-8a81-63ae519b0be2.jpeg"><p>أحلى ضحكة في الدنيا ضحكتك.</p></div>
+        <div class="card"><img src="IMG_4418.jpeg"><p>وجودك جنبي هو كل اللي بتمناه.</p></div>
+        <div class="card"><img src="ab984390-dba5-437e-898c-b5094c8d6d20.jpeg"><p>معاكي بحس إني ملكت الدنيا كلها.</p></div>
+        <div class="card"><img src="e622ddf3-b6c8-4430-8158-845f4eadf70f.jpeg"><p>كل سنة وانتي بتكبري قدامي وبحس إني محظوظ بيكي.</p></div>
+        <div class="card"><img src="3135284C-D0E2-438A-B210-BB2929FA1FCE.jpeg"><p>بحبك يا كل حاجة حلوة في حياتي.</p></div>
 
-        <div style="background: #fff; padding: 40px; border-radius: 30px; margin: 50px auto; max-width: 600px; border: 2px solid #d81b60;">
-            <h2 style="color: #d81b60;">💌 رسالة من القلب</h2>
-            <p style="font-size: 1.3rem; line-height: 2;">
-                ملك حبيبتي، النهاردة يوم مميز جداً، مش بس عشان عيد ميلادك، لكن عشان ده اليوم اللي نورت فيه الدنيا بيكي. 
-                عايزك تعرفي إن كل لحظة بقضيها معاكي هي أغلى لحظة في عمري. شكراً لأنك دايماً بتدعميني، شكراً لأنك بتسمعيني، وشكراً لأنك ببساطة "إنتي". 
-                بوعدك أفضل أحبك وأهتم بيكي وأحاول أخليكي أسعد إنسانة في الدنيا. كل سنة وانتي قلبي وحياتي.
+        <div style="background: white; padding: 50px; border-radius: 50px; margin: 50px auto; max-width: 600px; border: 2px dashed #ff85a2;">
+            <h2 style="color: #d81b60;">رسالة من القلب لملوكه 💖</h2>
+            <p style="font-size: 1.4rem; line-height: 2;">
+                يا أغلى إنسانة في حياتي، النهاردة يوم مش عادي لأن العالم أحتفل فيه بميلادك. 
+                مش عارف أقولك إيه ولا إيه، بس يكفيني إنك معايا. انتي السند والبيت والحب الصادق.
+                كل سنة وانتي محققة كل أحلامك، وكل سنة وانتي جنبي وبخير. بحبك أكتر مما تتخيلي!
             </p>
-            <h1 style="color: #d81b60; margin-top: 30px;">❤️ Mohamed ❤️</h1>
-            <p>I love you more than words can say!</p>
+            <div style="font-size: 2.5rem; font-weight: bold; color: #d81b60; margin-top: 30px;">❤️ Mohamed ❤️</div>
+            <p style="font-size: 1.2rem;">I Love You More Than Anything</p>
         </div>
     </div>
 
     <div class="music-bar">
         <audio id="bg-music" loop><source src="song.mp3" type="audio/mpeg"></audio>
-        <button onclick="document.getElementById('bg-music').play()" style="background: white; color: #d81b60; border: none; padding: 10px 20px; border-radius: 20px; font-weight: bold;">▶️ شغلي الأغنية يا ملوكة</button>
+        <button onclick="document.getElementById('bg-music').play()" style="background: white; color: #d81b60; border: none; padding: 10px 30px; border-radius: 20px; font-weight: bold; cursor: pointer;">▶️ شغلي الموسيقى</button>
     </div>
 
     <script>
@@ -74,13 +76,13 @@
                 document.getElementById('lock-screen').style.display = 'none';
                 document.getElementById('main-content').style.display = 'block';
                 setInterval(createHeart, 300);
-            } else { alert("الباسورد غلط يا روحي!"); }
+            } else { alert("الباسورد مش صح يا روحي!"); }
         }
         function createHeart() {
             const h = document.createElement('div'); h.innerHTML = '❤️'; h.className = 'heart';
             h.style.left = Math.random() * 100 + 'vw';
             document.body.appendChild(h);
-            setTimeout(() => h.remove(), 5000);
+            setTimeout(() => h.remove(), 6000);
         }
         window.addEventListener('scroll', () => {
             document.querySelectorAll('.card').forEach(c => {
