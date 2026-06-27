@@ -6,69 +6,89 @@
     <title>Happy Birthday Malak ❤️</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap');
-        
-        /* ألوان رومانسية فاتحة */
+
         body { margin: 0; background: #fff0f5; color: #5a3e5a; font-family: 'Tajawal', sans-serif; overflow-x: hidden; }
-        
-        /* 4. شاشة القفل تظهر بحركة سريعة */
-        #lock-screen { position: fixed; top:0; left:0; width:100%; height:100%; background: #fce4ec; display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 9999; animation: fadeIn 1s ease-in; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        .hb-main { font-size: 3rem; color: #ec407a; text-shadow: 0 0 10px #f48fb1; }
+        /* شاشة القفل */
+        #lock-screen { position: fixed; top:0; left:0; width:100%; height:100%; background: linear-gradient(135deg, #fce4ec, #f8bbd0); display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 9999; animation: fadeIn 1.5s ease-in; }
+        
+        .hb-main { font-size: 3rem; color: #ec407a; text-shadow: 0 0 10px #f48fb1; margin-bottom: 20px; }
         input { padding: 15px; border-radius: 25px; border: 2px solid #ec407a; width: 250px; text-align: center; background: rgba(255,255,255,0.8); }
-        button { padding: 15px 40px; margin-top: 20px; background: #ec407a; border: none; border-radius: 25px; color: white; cursor: pointer; }
+        button { padding: 15px 40px; margin-top: 20px; background: #ec407a; border: none; border-radius: 25px; color: white; cursor: pointer; transition: 0.3s; }
+        button:hover { background: #d81b60; transform: scale(1.1); }
 
-        /* 2. الخلفية صورة واضحة بنسبة 70% */
-        #main-content { display: none; padding: 20px; text-align: center; background: url('3135284C-D0E2-438A-B210-BB2929FA1FCE.jpeg') no-repeat center center fixed; background-size: cover; min-height: 100vh; }
-        #main-content::before { content: ""; position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(255, 240, 245, 0.7); z-index: 0; }
-        
+        /* الشاشة الرئيسية */
+        #main-content { display: none; padding: 20px; text-align: center; background: url('3135284C-D0E2-438A-B210-BB2929FA1FCE.jpeg') no-repeat center center fixed; background-size: cover; position: relative; }
+        #main-content::before { content: ""; position: absolute; top:0; left:0; width:100%; height:100%; background: rgba(255, 240, 245, 0.7); z-index: 0; }
         .content-wrapper { position: relative; z-index: 1; }
-        .hero-img { width: 200px; height: 200px; border-radius: 50%; border: 4px solid #fff; margin-bottom: 20px; }
-        
-        /* 5. الصور تتحرك مع حركة الماوس/اللمس */
-        .card { background: rgba(255, 255, 255, 0.8); padding: 15px; border-radius: 20px; margin: 30px auto; max-width: 350px; transition: 0.5s; cursor: pointer; }
-        .card:hover { transform: scale(1.05) rotate(2deg); }
+
+        .hero-img { width: 200px; height: 200px; border-radius: 50%; border: 6px solid #fff; margin-bottom: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+
+        /* الصور والبطاقات */
+        .card { background: rgba(255, 255, 255, 0.9); padding: 15px; border-radius: 20px; margin: 30px auto; max-width: 350px; transition: 0.5s; border: 1px solid #f8bbd0; }
+        .card:hover { transform: translateY(-10px) rotate(1deg); }
         .card img { width: 100%; height: 280px; object-fit: cover; border-radius: 15px; }
 
-        /* 3 & 5. قلوب واضحة بنسبة 70% */
-        .heart { position: fixed; color: #ec407a; opacity: 0.7; pointer-events: none; z-index: 50; animation: fall 6s linear infinite; }
+        /* القلوب */
+        .heart { position: fixed; color: #ec407a; opacity: 0.7; pointer-events: none; z-index: 50; animation: fall 6s linear infinite; font-size: 20px; }
         @keyframes fall { 0% { transform: translateY(-10vh); } 100% { transform: translateY(110vh); } }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        /* الرسالة الأخيرة */
+        .final-message { background: rgba(255, 255, 255, 0.95); padding: 50px 30px; border-radius: 40px; margin: 50px auto; max-width: 700px; border: 3px solid #ec407a; box-shadow: 0 20px 50px rgba(236, 64, 122, 0.2); }
+        .final-message h2 { font-size: 3rem; color: #ec407a; margin-bottom: 20px; }
+        .final-message p { font-size: 1.8rem; line-height: 2; font-weight: bold; color: #5a3e5a; }
     </style>
 </head>
 <body>
 
     <div id="lock-screen">
-        <h1 class="hb-main">Happy Birthday Malak</h1>
-        <input type="text" id="password" placeholder="اكتبي love">
-        <button onclick="checkPass()">افتحي المفاجأة 💖</button>
+        <h1 class="hb-main">💖 Mohamed & Malak 💖</h1>
+        <input type="text" id="password" placeholder="اكتبي love لفتح المفاجأة">
+        <button onclick="checkPass()">افتحي يا ملوكة 💖</button>
     </div>
 
     <div id="main-content">
         <div class="content-wrapper">
-            <h1>عيد ميلاد سعيد يا ملك عمري 🎂</h1>
+            <h1>🎂 Happy Birthday Malak 🎂</h1>
+            <h3>28 / 06 / 2005</h3>
             <img src="3135284C-D0E2-438A-B210-BB2929FA1FCE.jpeg" class="hero-img">
 
-            <div class="card"><img src="3135284C-D0E2-438A-B210-BB2929FA1FCE.jpeg"><p>النهاردة يوم ميلادك يا أغلى الناس.</p></div>
-            <div class="card"><img src="546be1fc-98e4-48ef-8a81-63ae519b0be2.jpeg"><p>وجودك هو اللي بيحلي أيامي.</p></div>
-            
-            <!-- 5. الرسالة الأخيرة أكبر -->
-            <div style="background: rgba(255,255,255,0.9); padding: 40px; border-radius: 30px; margin: 50px auto; max-width: 700px; border: 2px solid #ec407a;">
-                <h2 style="font-size: 2.5rem; color: #ec407a;">💌 رسالة من القلب</h2>
-                <p style="line-height: 2; font-size: 1.8rem; font-weight: bold;">
-                    يا ملك، كل سنة وانتي حبيبتي وشريكة عمري، الدنيا بيكي أجمل بكتير، بحبك يا أغلى ما عندي! 💖
+            <h2>📸 ذكرياتنا الحلوة</h2>
+            <div class="card"><img src="3135284C-D0E2-438A-B210-BB2929FA1FCE.jpeg"><p>أجمل ضحكة شفتها في حياتي.</p></div>
+            <div class="card"><img src="546be1fc-98e4-48ef-8a81-63ae519b0be2.jpeg"><p>كل لحظة معاكي بتسوى الدنيا.</p></div>
+            <div class="card"><img src="IMG_4418.jpeg"><p>انتي الأمان اللي دورت عليه دايماً.</p></div>
+            <div class="card"><img src="ab984390-dba5-437e-898c-b5094c8d6d20.jpeg"><p>بحب تفاصيلك الصغيرة والكبيرة.</p></div>
+            <div class="card"><img src="e622ddf3-b6c8-4430-8158-845f4eadf70f.jpeg"><p>أحلى أيام عمري هي اللي بقضيها معاكي.</p></div>
+
+            <div class="final-message">
+                <h2>💌 رسالة ليكي</h2>
+                <p>
+                    ملك… 💖<br>
+                    كل سنة وانتي أجمل حاجة حصلت في حياتي.<br>
+                    وجودك جنبي نعمة بشكر ربنا عليها كل يوم.<br>
+                    ضحكتك وسعادتك هما أجمل حاجة في الدنيا بالنسبالي.<br>
+                    يارب العمر كله يكون في حب وفرحة وسعادة.<br>
+                    كل سنة وانتي معايا ينور عيني ❤️
                 </p>
-                <div style="font-size: 2rem;">❤️ Mohamed ❤️</div>
             </div>
+
+            <footer style="padding: 20px; font-weight: bold;">💖 Mohamed Loves Malak Forever 💖</footer>
         </div>
     </div>
+
+    <audio id="bg-music" loop>
+        <source src="song.mp3" type="audio/mpeg">
+    </audio>
 
     <script>
         function checkPass() {
             if(document.getElementById('password').value.toLowerCase() === 'love') {
                 document.getElementById('lock-screen').style.display = 'none';
                 document.getElementById('main-content').style.display = 'block';
-                setInterval(createHeart, 400); // تفعيل القلوب
-            } else { alert("الباسورد غلط يا روحي"); }
+                document.getElementById('bg-music').play();
+                setInterval(createHeart, 300);
+            } else { alert("الباسورد غلط يا روحي، جربي love"); }
         }
 
         function createHeart() {
@@ -76,13 +96,21 @@
             h.innerHTML = '❤️';
             h.className = 'heart';
             h.style.left = Math.random() * 100 + 'vw';
-            h.style.fontSize = Math.random() * 20 + 10 + 'px';
+            h.style.animationDuration = (Math.random() * 3 + 3) + 's';
             document.body.appendChild(h);
             setTimeout(() => h.remove(), 6000);
         }
-        
-        // تفعيل قلوب شاشة القفل
-        setInterval(createHeart, 400);
+
+        // تأثير تحريك الصور مع حركة الماوس (Parallax بسيط)
+        document.addEventListener('mousemove', (e) => {
+            const cards = document.querySelectorAll('.card');
+            cards.forEach(card => {
+                const speed = 0.02;
+                const x = (window.innerWidth - e.pageX * speed) / 100;
+                const y = (window.innerHeight - e.pageY * speed) / 100;
+                card.style.transform = `translateX(${x}px) translateY(${y}px)`;
+            });
+        });
     </script>
 </body>
 </html>
