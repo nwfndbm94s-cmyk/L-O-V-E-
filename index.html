@@ -317,7 +317,7 @@ placeholder="اكتبي love">
 
 <!-- القلوب -->
 
-<div class="hearts"></div>
+<di<div class="container" id="main-content" style="visibility:hidden;opacity:0;transition:1s;">
 
 <!-- المحتوى -->
 
@@ -438,28 +438,56 @@ onclick="document.getElementById('bg-music').play()">
 
 function checkPass(){
 
-const pass =
-document.getElementById('password')
+const password =
+document.getElementById("password")
 .value
+.trim()
 .toLowerCase();
 
-if(pass === "love"){
+if(password === "love"){
 
-document.getElementById('lock-screen')
-.style.display='none';
+const lockScreen =
+document.getElementById("lock-screen");
 
-document.querySelector('.container')
-.style.display='block';
+const content =
+document.getElementById("main-content");
 
-document.getElementById('bg-music')
-.play()
-.catch(()=>{});
+lockScreen.style.opacity = "0";
+
+setTimeout(()=>{
+
+lockScreen.style.display = "none";
+
+content.style.visibility = "visible";
+
+content.style.opacity = "1";
+
+const music =
+document.getElementById("bg-music");
+
+if(music){
+music.play().catch(()=>{});
+}
+
+},800);
 
 }else{
 
 alert("الباسورد غلط يا ملوكة ❤️");
 
 }
+
+}
+
+document
+.getElementById("password")
+.addEventListener("keypress",function(e){
+
+if(e.key === "Enter"){
+checkPass();
+}
+
+});
 
 }
 
