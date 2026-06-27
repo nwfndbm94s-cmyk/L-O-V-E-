@@ -25,6 +25,63 @@ color:white;
 text-align:center;
 }
 
+/* شاشة القفل */
+
+#lock-screen{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:linear-gradient(135deg,#ffb6c1,#ffc0cb,#ffd1dc);
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+z-index:99999;
+}
+
+.lock-title{
+font-size:3rem;
+font-weight:900;
+color:white;
+text-shadow:0 0 20px #ff4d88;
+margin-bottom:20px;
+}
+
+.lock-text{
+font-size:1.2rem;
+margin-bottom:20px;
+}
+
+#password{
+width:280px;
+padding:15px;
+border:none;
+border-radius:30px;
+outline:none;
+text-align:center;
+font-size:1rem;
+}
+
+#lock-screen button{
+margin-top:20px;
+padding:15px 35px;
+border:none;
+border-radius:30px;
+background:#ff4d88;
+color:white;
+font-size:1rem;
+cursor:pointer;
+transition:.3s;
+}
+
+#lock-screen button:hover{
+transform:scale(1.05);
+}
+
+/* القلوب */
+
 .hearts{
 position:fixed;
 top:0;
@@ -63,6 +120,7 @@ opacity:0;
 position:relative;
 z-index:2;
 padding:30px 20px;
+display:none;
 }
 
 .hero{
@@ -169,6 +227,21 @@ font-size:1.3rem;
 font-weight:bold;
 }
 
+.music-btn{
+position:fixed;
+bottom:20px;
+left:50%;
+transform:translateX(-50%);
+z-index:1000;
+background:#ff4d88;
+border:none;
+padding:12px 25px;
+border-radius:50px;
+color:white;
+cursor:pointer;
+font-size:16px;
+}
+
 @keyframes fadeIn{
 from{
 opacity:0;
@@ -198,27 +271,71 @@ font-size:1.8rem;
 font-size:1.1rem;
 }
 
+.lock-title{
+font-size:2rem;
+}
+
+#password{
+width:220px;
+}
+
 }
 
 </style>
 </head>
+
 <body>
 
-<audio autoplay loop>
+<!-- شاشة القفل -->
+
+<div id="lock-screen">
+
+<h1 class="lock-title">
+💖 Happy Birthday Malak 💖
+</h1>
+
+<p class="lock-text">
+أدخلي الباسورد يا ملوكة ❤️
+</p>
+
+<input
+type="text"
+id="password"
+placeholder="اكتبي love">
+
+<button onclick="checkPass()">
+افتحي المفاجأة 🎁
+</button>
+
+</div>
+
+<!-- الموسيقى -->
+
+<audio id="bg-music" loop>
 <source src="song.mp3" type="audio/mpeg">
 </audio>
 
+<!-- القلوب -->
+
 <div class="hearts"></div>
+
+<!-- المحتوى -->
 
 <div class="container">
 
 <section class="hero">
 
-<h1>💖 Mohamed & Malak 💖</h1>
+<h1>
+💖 Mohamed & Malak 💖
+</h1>
 
-<h2>🎂 Happy Birthday Malak 🎂</h2>
+<h2>
+🎂 Happy Birthday Malak 🎂
+</h2>
 
-<div class="date">28 / 06 / 2005</div>
+<div class="date">
+28 / 06 / 2005
+</div>
 
 <img
 class="main-image"
@@ -282,17 +399,23 @@ alt="Malak">
 
 <div class="love-letter">
 
-ملك… 💖<br><br>
+ملك… 💖
+<br><br>
 
-كل سنة وانتي أجمل حاجة حصلت في حياتي.<br><br>
+كل سنة وانتي أجمل حاجة حصلت في حياتي.
+<br><br>
 
-وجودك جنبي نعمة بشكر ربنا عليها كل يوم.<br><br>
+وجودك جنبي نعمة بشكر ربنا عليها كل يوم.
+<br><br>
 
-ضحكتك وسعادتك هما أجمل حاجة في الدنيا بالنسبالي.<br><br>
+ضحكتك وسعادتك هما أجمل حاجة في الدنيا بالنسبالي.
+<br><br>
 
-يارب العمر كله يكون في حب وفرحة وسعادة.<br><br>
+يارب العمر كله يكون في حب وفرحة وسعادة.
+<br><br>
 
-وأفضل أشوفك مبسوطة وناجحة ومحققة كل أحلامك.<br><br>
+وأفضل أشوفك مبسوطة وناجحة ومحققة كل أحلامك.
+<br><br>
 
 كل سنة وانتي معايا ينور عيني ❤️
 
@@ -306,23 +429,62 @@ alt="Malak">
 
 </div>
 
+<button class="music-btn"
+onclick="document.getElementById('bg-music').play()">
+🎵 شغلي الأغنية
+</button>
+
 <script>
 
-const heartsContainer = document.querySelector('.hearts');
+function checkPass(){
+
+const pass =
+document.getElementById('password')
+.value
+.toLowerCase();
+
+if(pass === "love"){
+
+document.getElementById('lock-screen')
+.style.display='none';
+
+document.querySelector('.container')
+.style.display='block';
+
+document.getElementById('bg-music')
+.play()
+.catch(()=>{});
+
+}else{
+
+alert("الباسورد غلط يا ملوكة ❤️");
+
+}
+
+}
+
+/* قلوب متحركة */
+
+const heartsContainer =
+document.querySelector('.hearts');
 
 function createHeart(){
 
-const heart = document.createElement('div');
+const heart =
+document.createElement('div');
 
 heart.classList.add('heart');
 
 heart.innerHTML='💖';
 
-heart.style.left=Math.random()*100+'vw';
+heart.style.left =
+Math.random()*100+'vw';
 
-heart.style.fontSize=(20+Math.random()*30)+'px';
+heart.style.fontSize =
+(20+Math.random()*30)+'px';
 
-heart.style.animationDuration=(5+Math.random()*6)+'s';
+heart.style.animationDuration =
+(5+Math.random()*6)+'s';
 
 heartsContainer.appendChild(heart);
 
