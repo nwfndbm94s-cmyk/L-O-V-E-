@@ -148,25 +148,20 @@ opacity:0;
 
 Unlock 🔓
 
+<script>
 function unlockSite(){
-
-let pass = document.getElementById(“pass”).value.trim();
-
-if(pass.toLowerCase() === “love”){
-
-document.getElementById(“lockScreen”).style.display = “none”;
-
-let music = document.getElementById(“music”);
-
+let pass = document.getElementById("pass").value.trim();
+if(pass.toLowerCase() === "love"){
+document.getElementById("lockScreen").style.display = "none";
+let music = document.getElementById("music");
 if(music){
 music.play().catch(()=>{});
 }
-
 }else{
-
-alert(“الباسورد الصحيح هو: Love ❤️”);
-
+alert("الباسورد الصحيح هو Love ❤️");
 }
+}
+</script>
 
 }
 </div>
