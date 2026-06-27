@@ -5,10 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mohamed & Malak 💖</title>
 
+<!-- FONT -->
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;700;900&display=swap" rel="stylesheet">
+
 <style>
 body{
 margin:0;
-font-family:Arial;
+font-family:'Cairo', sans-serif;
 background:#fff;
 overflow-x:hidden;
 }
@@ -18,16 +21,24 @@ overflow-x:hidden;
 position:fixed;
 inset:0;
 display:flex;
-flex-direction:column;
 justify-content:center;
 align-items:center;
 z-index:9999;
 text-align:center;
-overflow:hidden;
 color:white;
+
+opacity:0;
+transform:scale(1.1);
+animation:showLock 1.2s ease forwards;
 }
 
-/* background image */
+@keyframes showLock{
+to{
+opacity:1;
+transform:scale(1);
+}
+}
+
 #lockScreen::before{
 content:"";
 position:absolute;
@@ -35,39 +46,22 @@ inset:0;
 background:url("3135284C-D0E2-438A-B210-BB2929FA1FCE.jpeg") center/cover no-repeat;
 filter:blur(3px);
 transform:scale(1.1);
-opacity:0.55; /* الصورة 70% تقريباً */
+opacity:0.6;
 }
 
-/* dark overlay soft pink */
 #lockScreen::after{
 content:"";
 position:absolute;
 inset:0;
-background:linear-gradient(135deg,rgba(255,192,203,0.4),rgba(255,255,255,0.3));
+background:linear-gradient(135deg,rgba(255,192,203,0.4),rgba(255,255,255,0.2));
 }
 
-.lockContent{
-position:relative;
-z-index:2;
-}
-
-#lockScreen h1{
-font-size:26px;
-color:#ff3d7f;
-text-shadow:0 5px 15px rgba(0,0,0,0.3);
-}
-
-#lockScreen p{
-color:#fff;
-margin-bottom:15px;
-text-shadow:0 3px 10px rgba(0,0,0,0.4);
-}
+.lockContent{position:relative;z-index:2;}
 
 input{
 padding:12px;
 border-radius:12px;
 border:none;
-outline:none;
 text-align:center;
 width:200px;
 }
@@ -79,56 +73,42 @@ border:none;
 border-radius:25px;
 background:#ff4d88;
 color:white;
-font-size:16px;
 cursor:pointer;
-}
-
-/* hearts on lock */
-.lockHeart{
-position:fixed;
-color:#ff4d88;
-font-size:18px;
-animation:fall 5s linear infinite;
-}
-
-@keyframes fall{
-0%{transform:translateY(-10vh);}
-100%{transform:translateY(110vh);}
+font-weight:bold;
 }
 
 /* ================= MAIN ================= */
-#main{
-display:none;
-background:#fff;
-}
+#main{display:none;}
 
 /* HERO */
 .hero{
 height:90vh;
 background:url("3135284C-D0E2-438A-B210-BB2929FA1FCE.jpeg") center/cover no-repeat;
-position:relative;
 display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
 text-align:center;
 color:white;
+position:relative;
 }
 
 .hero::before{
 content:"";
 position:absolute;
 inset:0;
-background:rgba(255,255,255,0.3);
+background:rgba(0,0,0,0.25);
 }
 
-.hero h1,.hero h2,.hero p{
+.hero h1,.hero h2,.hero h3,.hero p{
 position:relative;
 z-index:2;
-text-shadow:0 5px 15px rgba(0,0,0,0.3);
+text-shadow:0 5px 15px rgba(0,0,0,0.4);
+font-weight:900;
+letter-spacing:1px;
 }
 
-/* ================= VERTICAL MEMORIES ================= */
+/* ================= MEMORIES ================= */
 .vertical{
 display:flex;
 flex-direction:column;
@@ -152,6 +132,8 @@ box-shadow:0 15px 35px rgba(0,0,0,0.2);
 opacity:0;
 transform:translateY(30px);
 animation:fadeUp 1s forwards;
+transition:transform 0.3s ease;
+will-change:transform;
 }
 
 @keyframes fadeUp{
@@ -164,9 +146,10 @@ transform:translateY(0);
 .v-item p{
 margin-top:10px;
 color:#ff3d7f;
+font-weight:700;
 }
 
-/* MESSAGE */
+/* ================= CARD ================= */
 .card{
 background:#fff;
 padding:25px;
@@ -178,14 +161,15 @@ text-align:center;
 color:#ff3d7f;
 }
 
-/* HEARTS */
+/* ================= HEARTS ================= */
 .heart{
 position:fixed;
 top:-10px;
 color:#ff4d88;
-font-size:18px;
+font-size:22px;
+opacity:0.8;
 animation:fall linear infinite;
-z-index:1;
+filter:drop-shadow(0 0 5px #ff4d88);
 }
 
 .burst{
@@ -194,15 +178,30 @@ font-size:24px;
 animation:burst 1.5s ease forwards;
 }
 
+@keyframes fall{
+0%{transform:translateY(-10vh);}
+100%{transform:translateY(110vh);}
+}
+
 @keyframes burst{
 0%{transform:scale(0);}
 100%{transform:scale(1.6);opacity:0;}
 }
 
+.lockHeart{
+position:fixed;
+color:#ff4d88;
+font-size:18px;
+animation:fall 6s linear infinite;
+opacity:0.7;
+}
+
+/* FOOTER */
 footer{
 text-align:center;
 padding:20px;
 color:#ff3d7f;
+font-weight:bold;
 }
 </style>
 </head>
@@ -217,24 +216,25 @@ color:#ff3d7f;
 <!-- ================= LOCK SCREEN ================= -->
 <div id="lockScreen">
 <div class="lockContent">
-<h1>💖 happy birthday malokty 💖</h1>
+<h1>💖 Happy Birthday Malak 💖</h1>
 <p>اكتبي الباسورد يا قلبي ❤️</p>
 
 <input id="pass" type="password" placeholder="Password">
 <br>
-<button onclick="openSite()">دوسي هنا بسرعه🌚 💖</button>
+<button onclick="openSite()">افتحي القلب 💖</button>
 </div>
 </div>
 
 <!-- ================= MAIN ================= -->
 <div id="main">
 
-<!-- HERO -->
 <div class="hero">
 <h1>💖 Mohamed & Malak 💖</h1>
-<h2>🎂 Happy Birthday Malak 🎂</h2>
-<h3> Happy Birthday my love ❤️
-You are the most beautiful part of my life, and I’m grateful for every moment I get to spend with you. I wish you endless happiness, love, and success. I love you more every single day</h3>💖
+<h2>🎂 Happy Birthday 🎂</h2>
+<h3>
+Happy Birthday my love ❤️<br>
+You are the most beautiful part of my life.
+</h3>
 <p>28 / 06 / 2005</p>
 </div>
 
@@ -243,27 +243,27 @@ You are the most beautiful part of my life, and I’m grateful for every moment 
 
 <div class="v-item">
 <img src="3135284C-D0E2-438A-B210-BB2929FA1FCE.jpeg">
-<p>    💖</p>كل سنه وانتي طيبه ينور عينيي💖
+<p>💖 كل سنة وانتي طيبة يا نور عيني</p>
 </div>
 
 <div class="v-item">
 <img src="546be1fc-98e4-48ef-8a81-63ae519b0be2.jpeg">
-<p>  كل لحظه بتعدي معاكي بتبقا بالنسبالي حاجه كبيره اوي والله 🌸</p>
+<p>🌸 كل لحظة معاكي بحسها حياة</p>
 </div>
 
 <div class="v-item">
 <img src="IMG_4418.jpeg">
-<p>   انتي بجد بقيتي كل حاجه فحياتي ومكتبي بيكي ومش عاوز غيرك خالص  💕</p>
+<p>💕 إنتي كل حاجة في حياتي</p>
 </div>
 
 <div class="v-item">
 <img src="ab984390-dba5-437e-898c-b5094c8d6d20.jpeg">
-<p>  لم ببقا معاكي ببقا متطمن وحاسس اني مرتاح كداا ❤️</p>
+<p>❤️ معاك بحس بالأمان</p>
 </div>
 
 <div class="v-item">
 <img src="e622ddf3-b6c8-4430-8158-845f4eadf70f.jpeg">
-<p>انتي روح قلب محمد وعيونو 💘</p>
+<p>💘 إنتي روح قلبي</p>
 </div>
 
 </div>
@@ -272,10 +272,10 @@ You are the most beautiful part of my life, and I’m grateful for every moment 
 <div class="card">
 <h2>💌 رسالة ليكي</h2>
 <p>
-يا ملك… 💖<br><br>
-إنتي مش مجرد خطيبتي، إنتي حتة من كل حته .<br><br>
-كل يوم معاكي هو سبب إني أكون أحسن.<br><br>
-ربنا يخليكي ليا وما يحرمنيش منك أبدًا ❤️
+يا ملك 💖<br><br>
+إنتي مش مجرد خطيبتي، إنتي روحي.<br><br>
+كل يوم معاكي هو أجمل يوم.<br><br>
+ربنا يخليكي ليا ❤️
 </p>
 </div>
 
@@ -308,7 +308,6 @@ h.innerHTML="💖";
 h.style.left=Math.random()*100+"vw";
 h.style.top=Math.random()*100+"vh";
 document.body.appendChild(h);
-
 setTimeout(()=>h.remove(),1500);
 }
 
@@ -323,21 +322,32 @@ let h=document.createElement("div");
 h.classList.add("heart");
 h.innerHTML="💗";
 h.style.left=Math.random()*100+"vw";
-h.style.animationDuration=(3+Math.random()*3)+"s";
+h.style.animationDuration=(6+Math.random()*4)+"s";
 document.body.appendChild(h);
-setTimeout(()=>h.remove(),6000);
-},250);
+setTimeout(()=>h.remove(),8000);
+},300);
 
-/* lock screen hearts */
+/* lock hearts */
 setInterval(()=>{
 let h=document.createElement("div");
 h.classList.add("lockHeart");
 h.innerHTML="💖";
 h.style.left=Math.random()*100+"vw";
-h.style.top="100vh";
 document.body.appendChild(h);
-setTimeout(()=>h.remove(),5000);
-},200);
+setTimeout(()=>h.remove(),6000);
+},250);
+
+/* scroll animation */
+window.addEventListener("scroll",()=>{
+let imgs=document.querySelectorAll(".v-item img");
+
+imgs.forEach((img)=>{
+let rect=img.getBoundingClientRect();
+let center=window.innerHeight/2;
+let diff=(rect.top-center)/25;
+img.style.transform=`translateY(${diff}px)`;
+});
+});
 
 </script>
 
