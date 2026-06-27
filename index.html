@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mohamed & Malak 💖</title>
 
-<!-- FONT -->
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;700;900&display=swap" rel="stylesheet">
 
 <style>
@@ -16,7 +15,7 @@ background:#fff;
 overflow-x:hidden;
 }
 
-/* ================= LOCK SCREEN ================= */
+/* ================= LOCK ================= */
 #lockScreen{
 position:fixed;
 inset:0;
@@ -26,17 +25,13 @@ align-items:center;
 z-index:9999;
 text-align:center;
 color:white;
-
+animation:show 1.2s ease forwards;
 opacity:0;
 transform:scale(1.1);
-animation:showLock 1.2s ease forwards;
 }
 
-@keyframes showLock{
-to{
-opacity:1;
-transform:scale(1);
-}
+@keyframes show{
+to{opacity:1;transform:scale(1);}
 }
 
 #lockScreen::before{
@@ -53,7 +48,7 @@ opacity:0.6;
 content:"";
 position:absolute;
 inset:0;
-background:linear-gradient(135deg,rgba(255,192,203,0.4),rgba(255,255,255,0.2));
+background:linear-gradient(135deg,rgba(255,192,203,0.4),rgba(0,0,0,0.2));
 }
 
 .lockContent{position:relative;z-index:2;}
@@ -73,39 +68,36 @@ border:none;
 border-radius:25px;
 background:#ff4d88;
 color:white;
-cursor:pointer;
 font-weight:bold;
+cursor:pointer;
 }
 
-/* ================= MAIN ================= */
-#main{display:none;}
-
-/* HERO */
+/* ================= HERO ================= */
 .hero{
 height:90vh;
-background:url("3135284C-D0E2-438A-B210-BB2929FA1FCE.jpeg") center/cover no-repeat;
+position:relative;
 display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
 text-align:center;
 color:white;
-position:relative;
+background:url("3135284C-D0E2-438A-B210-BB2929FA1FCE.jpeg") center/cover no-repeat;
 }
 
+/* 🔥 وضوح الصورة 70% */
 .hero::before{
 content:"";
 position:absolute;
 inset:0;
-background:rgba(0,0,0,0.25);
+background:rgba(0,0,0,0.30);
 }
 
 .hero h1,.hero h2,.hero h3,.hero p{
 position:relative;
 z-index:2;
-text-shadow:0 5px 15px rgba(0,0,0,0.4);
 font-weight:900;
-letter-spacing:1px;
+text-shadow:0 5px 15px rgba(0,0,0,0.5);
 }
 
 /* ================= MEMORIES ================= */
@@ -113,13 +105,13 @@ letter-spacing:1px;
 display:flex;
 flex-direction:column;
 gap:40px;
-align-items:center;
 padding:30px 15px;
+align-items:center;
 }
 
 .v-item{
 width:90%;
-max-width:400px;
+max-width:420px;
 text-align:center;
 }
 
@@ -129,18 +121,8 @@ height:520px;
 object-fit:cover;
 border-radius:25px;
 box-shadow:0 15px 35px rgba(0,0,0,0.2);
-opacity:0;
-transform:translateY(30px);
-animation:fadeUp 1s forwards;
-transition:transform 0.3s ease;
+transition:transform 0.2s linear;
 will-change:transform;
-}
-
-@keyframes fadeUp{
-to{
-opacity:1;
-transform:translateY(0);
-}
 }
 
 .v-item p{
@@ -149,16 +131,27 @@ color:#ff3d7f;
 font-weight:700;
 }
 
-/* ================= CARD ================= */
+/* ================= BIG FINAL MESSAGE ================= */
 .card{
 background:#fff;
-padding:25px;
-margin:30px auto;
-max-width:700px;
-border-radius:20px;
-box-shadow:0 10px 25px rgba(0,0,0,0.1);
+padding:35px;
+margin:40px auto;
+max-width:800px;
+border-radius:25px;
+box-shadow:0 10px 30px rgba(0,0,0,0.15);
 text-align:center;
 color:#ff3d7f;
+font-size:20px;
+line-height:1.9;
+}
+
+.card h2{
+font-size:32px;
+margin-bottom:20px;
+}
+
+.card p{
+font-size:18px;
 }
 
 /* ================= HEARTS ================= */
@@ -169,154 +162,116 @@ color:#ff4d88;
 font-size:22px;
 opacity:0.8;
 animation:fall linear infinite;
-filter:drop-shadow(0 0 5px #ff4d88);
-}
-
-.burst{
-position:fixed;
-font-size:24px;
-animation:burst 1.5s ease forwards;
 }
 
 @keyframes fall{
 0%{transform:translateY(-10vh);}
 100%{transform:translateY(110vh);}
 }
-
-@keyframes burst{
-0%{transform:scale(0);}
-100%{transform:scale(1.6);opacity:0;}
-}
-
-.lockHeart{
-position:fixed;
-color:#ff4d88;
-font-size:18px;
-animation:fall 6s linear infinite;
-opacity:0.7;
-}
-
-/* FOOTER */
-footer{
-text-align:center;
-padding:20px;
-color:#ff3d7f;
-font-weight:bold;
-}
 </style>
 </head>
 
 <body>
 
-<!-- MUSIC -->
 <audio id="music" loop>
 <source src="song.mp3">
 </audio>
 
-<!-- ================= LOCK SCREEN ================= -->
+<!-- LOCK -->
 <div id="lockScreen">
 <div class="lockContent">
-<h1>💖 Happy Birthday Malak 💖</h1>
-<p>اكتبي الباسورد يا قلبي ❤️</p>
-
-<input id="pass" type="password" placeholder="Password">
+<h1>💖 Mohamed & Malak 💖</h1>
+<p>اكتب الباسورد يا قلبي</p>
+<input id="pass" type="password">
 <br>
-<button onclick="openSite()">افتحي القلب 💖</button>
+<button onclick="openSite()">ادخل 💖</button>
 </div>
 </div>
 
-<!-- ================= MAIN ================= -->
+<!-- MAIN -->
 <div id="main">
 
 <div class="hero">
 <h1>💖 Mohamed & Malak 💖</h1>
-<h2>🎂 Happy Birthday 🎂</h2>
-<h3>
-Happy Birthday my love ❤️<br>
-You are the most beautiful part of my life.
-</h3>
+<h2>Happy Birthday My Love 🎂</h2>
+<h3>انتِ مش مجرد حب… انتِ الأمان اللي مفيش بعده</h3>
 <p>28 / 06 / 2005</p>
 </div>
 
-<!-- MEMORIES -->
 <div class="vertical">
 
 <div class="v-item">
 <img src="3135284C-D0E2-438A-B210-BB2929FA1FCE.jpeg">
-<p>💖 كل سنة وانتي طيبة يا نور عيني</p>
+<p>كل سنة وانتي طيبة يا أجمل حاجة حصلتلي 💖</p>
 </div>
 
 <div class="v-item">
 <img src="546be1fc-98e4-48ef-8a81-63ae519b0be2.jpeg">
-<p>🌸 كل لحظة معاكي بحسها حياة</p>
+<p>وجودك جنبي هو أحلى صدفة في حياتي 🌸</p>
 </div>
 
 <div class="v-item">
 <img src="IMG_4418.jpeg">
-<p>💕 إنتي كل حاجة في حياتي</p>
+<p>كل لحظة معاكي بتعلّمني يعني إيه حب حقيقي 💕</p>
 </div>
 
 <div class="v-item">
 <img src="ab984390-dba5-437e-898c-b5094c8d6d20.jpeg">
-<p>❤️ معاك بحس بالأمان</p>
+<p>في حضنك الدنيا بتبقى أمان ❤️</p>
 </div>
 
 <div class="v-item">
 <img src="e622ddf3-b6c8-4430-8158-845f4eadf70f.jpeg">
-<p>💘 إنتي روح قلبي</p>
+<p>إنتي قلبي وروحي وكل حكاياتي 💘</p>
 </div>
 
 </div>
 
-<!-- MESSAGE -->
+<!-- 💥 FINAL MESSAGE BIG -->
 <div class="card">
-<h2>💌 رسالة ليكي</h2>
+<h2>💌 رسالة من قلبي ليكي</h2>
+
 <p>
-يا ملك 💖<br><br>
-إنتي مش مجرد خطيبتي، إنتي روحي.<br><br>
-كل يوم معاكي هو أجمل يوم.<br><br>
-ربنا يخليكي ليا ❤️
+يا ملاك حياتي… 💖<br><br>
+
+أنا عمري ما كنت أتخيل إن في حد ممكن يغيّر حياتي بالشكل ده…<br>
+بس إنتي جيتي وخليتي كل حاجة ليها معنى.<br><br>
+
+إنتي مش بس حب، إنتي الأمان اللي لما بكون تايه برجعله.<br>
+وكل مرة بسمع صوتك بحس إن الدنيا لسه فيها خير.<br><br>
+
+أنا بحبك مش عشان إنتي كاملة…<br>
+أنا بحبك عشان إنتي الحقيقة الوحيدة اللي مفيش بعدها أي حاجة.<br><br>
+
+ولو خيروني بين الدنيا كلها وبينك…<br>
+هختارك إنتي من غير تفكير ❤️<br><br>
+
+وعد مني… هفضل أحبك، أساندك، وأكون دايمًا السبب في ضحكتك.<br>
+لحد آخر نفس فيّا 💖
 </p>
 </div>
-
-<footer>
-💖 Mohamed Loves Malak Forever 💖
-</footer>
 
 </div>
 
 <script>
 
-let correctPassword = "Love";
+let correctPassword="Love";
 
-/* OPEN SITE */
+/* open */
 function openSite(){
-let pass = document.getElementById("pass").value;
+let pass=document.getElementById("pass").value;
 
-if(pass === correctPassword){
-
+if(pass===correctPassword){
 document.getElementById("lockScreen").style.display="none";
 document.getElementById("main").style.display="block";
-
 document.getElementById("music").play();
-
-/* burst hearts */
-for(let i=0;i<50;i++){
-let h=document.createElement("div");
-h.classList.add("burst");
-h.innerHTML="💖";
-h.style.left=Math.random()*100+"vw";
-h.style.top=Math.random()*100+"vh";
-document.body.appendChild(h);
-setTimeout(()=>h.remove(),1500);
 }
-
-}else{
-alert("الباسورد غلط يا قلبي 💔");
+else{
+alert("الباسورد غلط 💔");
 }
 }
 
-/* floating hearts */
+/* hearts */
 setInterval(()=>{
 let h=document.createElement("div");
 h.classList.add("heart");
@@ -324,28 +279,17 @@ h.innerHTML="💗";
 h.style.left=Math.random()*100+"vw";
 h.style.animationDuration=(6+Math.random()*4)+"s";
 document.body.appendChild(h);
-setTimeout(()=>h.remove(),8000);
+setTimeout(()=>h.remove(),9000);
 },300);
 
-/* lock hearts */
-setInterval(()=>{
-let h=document.createElement("div");
-h.classList.add("lockHeart");
-h.innerHTML="💖";
-h.style.left=Math.random()*100+"vw";
-document.body.appendChild(h);
-setTimeout(()=>h.remove(),6000);
-},250);
-
-/* scroll animation */
+/* PARALLAX SCROLL */
 window.addEventListener("scroll",()=>{
 let imgs=document.querySelectorAll(".v-item img");
 
 imgs.forEach((img)=>{
 let rect=img.getBoundingClientRect();
-let center=window.innerHeight/2;
-let diff=(rect.top-center)/25;
-img.style.transform=`translateY(${diff}px)`;
+let speed=rect.top/25;
+img.style.transform=`translateY(${speed}px)`;
 });
 });
 
