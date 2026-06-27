@@ -1,87 +1,340 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday Malak ❤️</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&family=Dancing+Script:wght@700&display=swap');
-        
-        body { margin: 0; background: linear-gradient(135deg, #fce4ec, #f8bbd0); color: #5d4037; font-family: 'Tajawal', sans-serif; overflow-x: hidden; text-align: center; }
-        
-        .container { padding: 40px 20px; max-width: 800px; margin: auto; }
-        
-        h1 { font-family: 'Dancing Script', cursive; color: #d81b60; font-size: 3rem; margin-bottom: 10px; }
-        h2 { color: #880e4f; }
-        
-        .hero-img { width: 100%; max-width: 400px; border-radius: 30px; border: 5px solid white; box-shadow: 0 15px 35px rgba(0,0,0,0.1); margin: 20px 0; transition: transform 0.3s; }
-        .hero-img:hover { transform: scale(1.05); }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        .memory-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 40px; }
-        .card { background: white; padding: 15px; border-radius: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.05); opacity: 0; transform: translateY(50px); transition: 0.8s; }
-        .card.visible { opacity: 1; transform: translateY(0); }
-        .card img { width: 100%; height: 250px; object-fit: cover; border-radius: 15px; }
+<title>Happy Birthday Malak ❤️</title>
 
-        .message-box { background: white; padding: 40px; margin: 50px auto; border-radius: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); line-height: 2; font-size: 1.2rem; }
-        
-        footer { padding: 30px; font-weight: bold; color: #880e4f; }
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700;900&display=swap" rel="stylesheet">
 
-        /* القلوب المتحركة */
-        .heart { position: fixed; color: #ff4081; pointer-events: none; animation: fly 6s linear infinite; z-index: 1000; }
-        @keyframes fly { 0% { transform: translateY(100vh); opacity: 1; } 100% { transform: translateY(-10vh); opacity: 0; } }
-    </style>
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Cairo',sans-serif;
+scroll-behavior:smooth;
+}
+
+body{
+background:linear-gradient(135deg,#ffd1dc,#ffb6c1,#ffc0cb);
+overflow-x:hidden;
+color:white;
+text-align:center;
+}
+
+.hearts{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+pointer-events:none;
+z-index:0;
+overflow:hidden;
+}
+
+.heart{
+position:absolute;
+bottom:-50px;
+color:#ff4d88;
+font-size:25px;
+animation:floatUp linear infinite;
+opacity:.8;
+}
+
+@keyframes floatUp{
+0%{
+transform:translateY(0) rotate(0deg);
+opacity:0;
+}
+20%{
+opacity:1;
+}
+100%{
+transform:translateY(-120vh) rotate(360deg);
+opacity:0;
+}
+}
+
+.container{
+position:relative;
+z-index:2;
+padding:30px 20px;
+}
+
+.hero{
+min-height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+animation:fadeIn 2s ease;
+}
+
+h1{
+font-size:3rem;
+font-weight:900;
+text-shadow:0 0 15px rgba(255,255,255,.7);
+}
+
+h2{
+font-size:2rem;
+margin-top:15px;
+}
+
+.date{
+font-size:1.4rem;
+margin-top:15px;
+font-weight:bold;
+}
+
+.main-image{
+width:90%;
+max-width:450px;
+margin-top:30px;
+border-radius:30px;
+box-shadow:0 15px 40px rgba(0,0,0,.25);
+transition:.4s;
+}
+
+.main-image:hover{
+transform:scale(1.04);
+}
+
+.section{
+padding:80px 20px;
+animation:fadeIn 2s ease;
+}
+
+.section-title{
+font-size:2.3rem;
+margin-bottom:40px;
+font-weight:800;
+}
+
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+max-width:1200px;
+margin:auto;
+}
+
+.card{
+background:rgba(255,255,255,.15);
+backdrop-filter:blur(10px);
+border-radius:25px;
+padding:15px;
+transition:.4s;
+}
+
+.card:hover{
+transform:translateY(-10px);
+}
+
+.card img{
+width:100%;
+border-radius:20px;
+box-shadow:0 10px 25px rgba(0,0,0,.25);
+transition:.4s;
+}
+
+.card img:hover{
+transform:scale(1.05);
+}
+
+.caption{
+margin-top:15px;
+font-size:1.1rem;
+font-weight:600;
+}
+
+.love-letter{
+max-width:900px;
+margin:auto;
+background:rgba(255,255,255,.15);
+padding:35px;
+border-radius:30px;
+backdrop-filter:blur(12px);
+font-size:1.3rem;
+line-height:2;
+}
+
+footer{
+padding:40px;
+font-size:1.3rem;
+font-weight:bold;
+}
+
+@keyframes fadeIn{
+from{
+opacity:0;
+transform:translateY(30px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+@media(max-width:768px){
+
+h1{
+font-size:2.2rem;
+}
+
+h2{
+font-size:1.5rem;
+}
+
+.section-title{
+font-size:1.8rem;
+}
+
+.love-letter{
+font-size:1.1rem;
+}
+
+}
+
+</style>
 </head>
 <body>
 
-    <div class="container">
-        <h1>💖 Mohamed & Malak 💖</h1>
-        <h2>🎂 Happy Birthday Malak 🎂</h2>
-        <p>28 / 06 / 2005</p>
+<audio autoplay loop>
+<source src="song.mp3" type="audio/mpeg">
+</audio>
 
-        <img src="3135284C-D0E2-438A-B210-BB2929FA1FCE.jpeg" class="hero-img">
+<div class="hearts"></div>
 
-        <h2>📸 ذكرياتنا الحلوة</h2>
-        <div class="memory-grid">
-            <div class="card"><img src="3135284C-D0E2-438A-B210-BB2929FA1FCE.jpeg"><p>أجمل أيام حياتي معاكي.</p></div>
-            <div class="card"><img src="546be1fc-98e4-48ef-8a81-63ae519b0be2.jpeg"><p>ضحكتك بتهون عليا أي تعب.</p></div>
-            <div class="card"><img src="IMG_4418.jpeg"><p>وجودك في حياتي نعمة كبيرة.</p></div>
-            <div class="card"><img src="ab984390-dba5-437e-898c-b5094c8d6d20.jpeg"><p>بحس إني ملكت الدنيا وانتي معايا.</p></div>
-            <div class="card"><img src="e622ddf3-b6c8-4430-8158-845f4eadf70f.jpeg"><p>كل سنة وانتي دنيتي.</p></div>
-        </div>
+<div class="container">
 
-        <div class="message-box">
-            <h2>💌 رسالة ليكي</h2>
-            <p>ملك… 💖<br>كل سنة وانتي أجمل حاجة حصلت في حياتي.<br>وجودك جنبي نعمة بشكر ربنا عليها كل يوم.<br>ضحكتك وسعادتك هما أجمل حاجة في الدنيا بالنسبالي.<br>يارب العمر كله يكون في حب وفرحة وسعادة.<br>وأفضل أشوفك مبسوطة وناجحة ومحققة كل أحلامك.<br>كل سنة وانتي معايا يا نور عيني ❤️</p>
-        </div>
+<section class="hero">
 
-        <footer>💖 Mohamed Loves Malak Forever 💖</footer>
-    </div>
+<h1>💖 Mohamed & Malak 💖</h1>
 
-    <audio autoplay loop id="music">
-        <source src="song.mp3" type="audio/mpeg">
-    </audio>
+<h2>🎂 Happy Birthday Malak 🎂</h2>
 
-    <script>
-        // إظهار الصور عند التمرير
-        window.addEventListener('scroll', () => {
-            document.querySelectorAll('.card').forEach(card => {
-                if(card.getBoundingClientRect().top < window.innerHeight - 100) card.classList.add('visible');
-            });
-        });
+<div class="date">28 / 06 / 2005</div>
 
-        // إنشاء القلوب
-        function createHeart() {
-            const h = document.createElement('div');
-            h.innerHTML = '❤️';
-            h.className = 'heart';
-            h.style.left = Math.random() * 100 + 'vw';
-            h.style.fontSize = Math.random() * 20 + 10 + 'px';
-            h.style.animationDuration = Math.random() * 3 + 4 + 's';
-            document.body.appendChild(h);
-            setTimeout(() => h.remove(), 6000);
-        }
-        setInterval(createHeart, 400);
-    </script>
+<img
+class="main-image"
+src="3135284C-D0E2-438A-B210-BB2929FA1FCE.jpeg"
+alt="Malak">
+
+</section>
+
+<section class="section">
+
+<div class="section-title">
+📸 ذكرياتنا الحلوة
+</div>
+
+<div class="gallery">
+
+<div class="card">
+<img src="3135284C-D0E2-438A-B210-BB2929FA1FCE.jpeg">
+<div class="caption">
+أجمل صورة وأجمل ذكرى وأجمل إحساس ❤️
+</div>
+</div>
+
+<div class="card">
+<img src="546be1fc-98e4-48ef-8a81-63ae519b0be2.jpeg">
+<div class="caption">
+كل لحظة معاكي بتتحول لذكرى جميلة 💖
+</div>
+</div>
+
+<div class="card">
+<img src="IMG_4418.jpeg">
+<div class="caption">
+وجودك في حياتي هو أجمل هدية من ربنا 🌹
+</div>
+</div>
+
+<div class="card">
+<img src="ab984390-dba5-437e-898c-b5094c8d6d20.jpeg">
+<div class="caption">
+بحب تفاصيلك وضحكتك وكل حاجة فيكي 🥰
+</div>
+</div>
+
+<div class="card">
+<img src="e622ddf3-b6c8-4430-8158-845f4eadf70f.jpeg">
+<div class="caption">
+ومهما يعدي وقت هفضل أحبك أكتر كل يوم ❤️
+</div>
+</div>
+
+</div>
+
+</section>
+
+<section class="section">
+
+<div class="section-title">
+💌 رسالة ليكي
+</div>
+
+<div class="love-letter">
+
+ملك… 💖<br><br>
+
+كل سنة وانتي أجمل حاجة حصلت في حياتي.<br><br>
+
+وجودك جنبي نعمة بشكر ربنا عليها كل يوم.<br><br>
+
+ضحكتك وسعادتك هما أجمل حاجة في الدنيا بالنسبالي.<br><br>
+
+يارب العمر كله يكون في حب وفرحة وسعادة.<br><br>
+
+وأفضل أشوفك مبسوطة وناجحة ومحققة كل أحلامك.<br><br>
+
+كل سنة وانتي معايا ينور عيني ❤️
+
+</div>
+
+</section>
+
+<footer>
+💖 Mohamed Loves Malak Forever 💖
+</footer>
+
+</div>
+
+<script>
+
+const heartsContainer = document.querySelector('.hearts');
+
+function createHeart(){
+
+const heart = document.createElement('div');
+
+heart.classList.add('heart');
+
+heart.innerHTML='💖';
+
+heart.style.left=Math.random()*100+'vw';
+
+heart.style.fontSize=(20+Math.random()*30)+'px';
+
+heart.style.animationDuration=(5+Math.random()*6)+'s';
+
+heartsContainer.appendChild(heart);
+
+setTimeout(()=>{
+heart.remove();
+},12000);
+
+}
+
+setInterval(createHeart,300);
+
+</script>
+
 </body>
 </html>
-
