@@ -498,7 +498,11 @@ checkPass();
 const heartsContainer =
 document.querySelector('.hearts');
 
-function createHeart(){
+function createHeart(const music = document.getElementById("bg-music");
+
+if(music){
+    music.play();
+}){
 
 const heart =
 document.createElement('div');
