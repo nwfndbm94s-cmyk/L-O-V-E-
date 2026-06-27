@@ -3,105 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday Malak ❤️</title>
+    <title>For Malak ❤️</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap');
+        body { margin: 0; background: #1a0b2e; color: white; font-family: 'Tajawal', sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; overflow: hidden; }
+        #app-container { width: 100%; max-width: 400px; text-align: center; }
         
-        body { margin: 0; padding: 0; font-family: 'Tajawal', sans-serif; background: #fce4ec; overflow-x: hidden; }
+        /* شاشة القفل */
+        #login-screen { background: #2d1b4e; padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        input { padding: 10px; border-radius: 10px; border: none; width: 80%; margin: 10px 0; }
+        button { padding: 10px 20px; border-radius: 10px; border: none; background: #ff4081; color: white; cursor: pointer; }
 
-        /* شاشة القفل (تظهر دائماً عند فتح الرابط) */
-        #lock-screen {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(135deg, #f8bbd0, #f48fb1);
-            display: flex; flex-direction: column; justify-content: center; align-items: center;
-            z-index: 9999; transition: opacity 0.8s ease;
-        }
-        .glass-card {
-            background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(15px);
-            padding: 40px; border-radius: 25px; text-align: center; 
-            border: 1px solid rgba(255,255,255,0.3); color: white;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
-        }
-        .btn-open {
-            padding: 15px 40px; font-size: 1.2rem; border: none; border-radius: 50px;
-            background: #d81b60; color: white; cursor: pointer; transition: 0.3s;
-            margin-top: 20px; font-weight: bold;
-        }
-        .btn-open:hover { transform: scale(1.1); background: #880e4f; }
-
-        /* القلوب المتطايرة */
-        .heart { position: fixed; color: #ff4081; font-size: 20px; pointer-events: none; z-index: 100; animation: fly 5s linear infinite; }
-        @keyframes fly { 0% { transform: translateY(100vh); opacity: 1; } 100% { transform: translateY(-10vh); opacity: 0; } }
-
-        /* محتوى الموقع */
-        #main-content { display: none; text-align: center; padding: 50px 20px; }
-        .hero-img { width: 250px; height: 250px; border-radius: 50%; border: 5px solid white; box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
-        .memory-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; padding: 20px; }
-        .card { background: white; padding: 15px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
-        .card img { width: 100%; height: 200px; object-fit: cover; border-radius: 10px; }
+        /* المحتوى المخفي */
+        #main-content { display: none; }
+        .timer-box { background: rgba(255,255,255,0.1); padding: 20px; border-radius: 15px; margin: 20px 0; }
+        .heart { position: fixed; color: #ff4081; pointer-events: none; animation: float 5s linear infinite; }
+        @keyframes float { to { transform: translateY(-100vh); opacity: 0; } }
     </style>
 </head>
 <body>
 
-    <!-- شاشة القفل -->
-    <div id="lock-screen">
-        <div class="glass-card">
-            <h1>💖 Mohamed & Malak 💖</h1>
-            <p>Forever Starts With You ✨</p>
-            <button class="btn-open" onclick="startExperience()">Open My Surprise ❤️</button>
-        </div>
+<div id="app-container">
+    <div id="login-screen">
+        <h2>أدخلي الباسورد يا ملوكة ❤️</h2>
+        <input type="text" id="password" placeholder="اكتبي love">
+        <button onclick="checkPass()">دخول</button>
     </div>
 
-    <!-- محتوى الموقع الأساسي -->
     <div id="main-content">
-        <h1>💖 Mohamed & Malak 💖</h1>
-        <h2>🎂 Happy Birthday Malak 🎂</h2>
-        <p>28 / 06 / 2005</p>
-        <img src="3135284C-D0E2-438A-B210-BB2929FA1FCE.jpeg" class="hero-img">
-
-        <h2>📸 ذكرياتنا الحلوة</h2>
-        <div class="memory-grid">
-            <div class="card"><img src="3135284C-D0E2-438A-B210-BB2929FA1FCE.jpeg"><p>أحلى أيام عمري</p></div>
-            <div class="card"><img src="546be1fc-98e4-48ef-8a81-63ae519b0be2.jpeg"><p>ضحكتك بتهون عليا كل حاجة</p></div>
-            <div class="card"><img src="IMG_4418.jpeg"><p>سندي وقوتي</p></div>
-            <div class="card"><img src="ab984390-dba5-437e-898c-b5094c8d6d20.jpeg"><p>معاكي بحس إني ملكت الدنيا</p></div>
-            <div class="card"><img src="e622ddf3-b6c8-4430-8158-845f4eadf70f.jpeg"><p>كل سنة وانتي دنيتي</p></div>
+        <h1>أحلى ملوكة في الدنيا 💖</h1>
+        <div class="timer-box">
+            <h3>بقالنا مع بعض:</h3>
+            <div id="timer">0 يوم - 0 ساعة - 0 دقيقة</div>
         </div>
-
-        <div style="background: white; padding: 30px; margin: 40px auto; max-width: 600px; border-radius: 20px;">
-            <h2>💌 رسالة ليكي</h2>
-            <p style="line-height: 2;">ملك… 💖<br>كل سنة وانتي أجمل حاجة حصلت في حياتي.<br>وجودك جنبي نعمة بشكر ربنا عليها كل يوم.<br>ضحكتك وسعادتك هما أجمل حاجة في الدنيا بالنسبالي.<br>يارب العمر كله يكون في حب وفرحة وسعادة.<br>وأفضل أشوفك مبسوطة وناجحة ومحققة كل أحلامك.<br>كل سنة وانتي معايا يا نور عيني ❤️</p>
-        </div>
-        <footer>💖 Mohamed Loves Malak Forever 💖</footer>
+        <button onclick="alert('ربنا يخليكي ليا يا روح قلبي ❤️')">رسالة ليكي 💌</button>
     </div>
+</div>
 
-    <audio id="myAudio" loop>
-        <source src="song.mp3" type="audio/mpeg">
-    </audio>
+<audio id="bg-music" loop><source src="song.mp3" type="audio/mpeg"></audio>
 
-    <script>
-        function startExperience() {
-            // إخفاء شاشة القفل
-            document.getElementById('lock-screen').style.opacity = '0';
-            setTimeout(() => {
-                document.getElementById('lock-screen').style.display = 'none';
-                document.getElementById('main-content').style.display = 'block';
-                // تشغيل الموسيقى
-                document.getElementById("myAudio").play();
-                // بدء القلوب
-                setInterval(spawnHeart, 400);
-            }, 800);
+<script>
+    // 1. منطق الباسورد
+    function checkPass() {
+        if(document.getElementById('password').value.toLowerCase() === 'love') {
+            document.getElementById('login-screen').style.display = 'none';
+            document.getElementById('main-content').style.display = 'block';
+            document.getElementById('bg-music').play();
+            setInterval(createHeart, 500);
+        } else {
+            alert("غلط يا روحي، حاولي تاني! الباسورد love");
         }
+    }
 
-        function spawnHeart() {
-            const heart = document.createElement('div');
-            heart.innerHTML = '❤️';
-            heart.className = 'heart';
-            heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
-            document.body.appendChild(heart);
-            setTimeout(() => heart.remove(), 5000);
-        }
-    </script>
+    // 2. عداد الوقت (عدل التاريخ هنا: سنة، شهر، يوم)
+    function updateTimer() {
+        const startDate = new Date("2025-12-21"); // تاريخ البداية
+        const now = new Date();
+        const diff = now - startDate;
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+        const mins = Math.floor((diff / (1000 * 60)) % 60);
+        document.getElementById('timer').innerText = `${days} يوم - ${hours} ساعة - ${mins} دقيقة`;
+    }
+    setInterval(updateTimer, 1000);
+
+    // 3. القلوب
+    function createHeart() {
+        const heart = document.createElement('div');
+        heart.innerHTML = '❤️';
+        heart.className = 'heart';
+        heart.style.left = Math.random() * 100 + 'vw';
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 5000);
+    }
+</script>
 </body>
 </html>
